@@ -61,3 +61,9 @@ For more information on using the Angular CLI, including detailed command refere
 ## Angular coding style guide
 
 To ensure coding practices that promote consistency across the Angular ecosystem this has followed https://angular.dev/style-guide
+
+
+ng build --configuration production --base-href "/tunance/"
+
+npx angular-cli-ghpages --dir=dist/tunance/browser
+  

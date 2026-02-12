@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "Tunance": {
+    "tunance": {
       "projectType": "application",
       "schematics": {},
       "root": "",
