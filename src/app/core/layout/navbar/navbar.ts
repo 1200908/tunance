@@ -1,14 +1,16 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
 export class NavbarComponent {
+  constructor(private router: Router) {}
+
   isNavbarHidden = false;
   lastScrollTop = 0;
 
@@ -23,5 +25,39 @@ export class NavbarComponent {
       this.isNavbarHidden = false;
     }
     this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  }
+
+  goToHome() {
+    this.router.navigate(['/home']).then(() => {
+      const el = document.querySelector('.hero');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+  goToAbout() {
+    this.router.navigate(['/about']).then(() => {
+      const el = document.querySelector('.about-hero');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  goToProgramacao() {
+    this.router.navigate(['/programacao']).then(() => {
+      const el = document.querySelector('.programacao-hero');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  goToGuia() {
+    this.router.navigate(['/guia-turistico']).then(() => {
+      const el = document.querySelector('.guia-hero');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  goToContact() {
+    this.router.navigate(['/contact']).then(() => {
+      const el = document.querySelector('.contact-hero');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
   }
 }
