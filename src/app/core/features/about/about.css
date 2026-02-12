@@ -1,14 +1,23 @@
 /* Hero Section */
 .about-hero {
   position: relative;
-  height: 50vh;
-  min-height: 400px;
-  background: linear-gradient(135deg, #16A085 0%, #F39C12 100%);
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   overflow: hidden;
+}
+
+/* Imagem de fundo */
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
 }
 
 .hero-overlay {
@@ -17,15 +26,21 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.5); /* ajusta opacidade conforme necessário */
+  z-index: 1;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 1;
-  color: #fff;
-  padding: 0 2rem;
+  color: #ffffff;
+  backdrop-filter: blur(1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 1rem 2rem;
+  max-width: 800px;
+  margin: 0 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
+
 
 .hero-content h1 {
   font-size: 3.5rem;
@@ -221,7 +236,7 @@
 /* CTA Section */
 .cta {
   padding: 5rem 5%;
-  background: linear-gradient(135deg, #16A085 0%, #F39C12 100%);
+  background: linear-gradient(135deg, #27AE60 0%, #16A085 20%, #16A085 80%, #27AE60 100%);
   text-align: center;
   color: #fff;
 }
@@ -258,62 +273,136 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  /* Hero Section */
+  .about-hero {
+    height: 300px;
+  }
+
+  .hero-content {
+    padding: 1.5rem 1.5rem;
+    margin: 0 1rem;
+  }
+
   .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-content p {
-    font-size: 1.1rem;
-  }
-
-  .about-section h2 {
     font-size: 2rem;
   }
 
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* Content Section */
+  .about-content {
+    padding: 3rem 5%;
+  }
+
+  .about-section {
+    margin-bottom: 3rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-section p {
+    font-size: 1rem;
+  }
+
+  /* Highlight Box */
   .highlight {
     padding: 2rem 1.5rem;
   }
 
+  /* Mission Grid */
   .mission-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .mission-item {
+    padding: 1.5rem;
+  }
+
+  .mission-item .icon {
+    font-size: 2.5rem;
+  }
+
+  .mission-item h3 {
+    font-size: 1.2rem;
+  }
+
+  .mission-item p {
+    font-size: 0.95rem;
+  }
+
+  /* Timeline */
+  .timeline {
+    padding: 1rem 0;
   }
 
   .timeline::before {
-    left: 4px;
+    left: 30px;
+    transform: none;
   }
 
   .timeline-item {
     flex-direction: row !important;
+    margin-bottom: 2rem;
   }
 
   .year {
-    flex: 0 0 80px;
-    font-size: 1.5rem;
+    flex: 0 0 60px;
+    font-size: 1.2rem;
+    text-align: left;
   }
 
   .timeline-content {
     margin: 0 0 0 1rem;
+    padding: 1.2rem;
   }
 
-  .stat-item {
-    flex: 1 1 100%; /* ocupa linha inteira */
-    max-width: 100%;
-    padding: 0.75rem;
+  .timeline-content h3 {
+    font-size: 1.1rem;
   }
 
-  .stat-item h3 {
-    font-size: 1.5rem; /* ajusta tamanho */
-  }
-
-  .stat-item p {
+  .timeline-content p {
     font-size: 0.9rem;
   }
 
+  /* Stats Grid */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .stat-item {
+    padding: 1.5rem 1rem;
   }
 
   .stat-number {
-    font-size: 2rem;
+    font-size: 2.2rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+  }
+
+  /* CTA Section */
+  .cta {
+    padding: 3rem 5%;
+  }
+
+  .cta h2 {
+    font-size: 1.8rem;
+  }
+
+  .cta p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
   }
 }

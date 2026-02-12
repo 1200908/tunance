@@ -332,7 +332,7 @@
   /* ===== CTA SECTION ===== */
   .cta {
     padding: 5rem 5%;
-    background: linear-gradient(135deg, #16A085 0%, #F39C12 100%);
+    background: linear-gradient(135deg, #27AE60 0%, #16A085 20%, #16A085 80%, #27AE60 100%);
     text-align: center;
     color: #fff;
   }

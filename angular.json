@@ -59,10 +59,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Tunance:build:production"
+              "buildTarget": "tunance:build:production"
             },
             "development": {
-              "buildTarget": "Tunance:build:development"
+              "buildTarget": "tunance:build:development"
             }
           },
           "defaultConfiguration": "development"
