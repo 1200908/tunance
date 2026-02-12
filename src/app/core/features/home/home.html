@@ -1,0 +1,98 @@
+<section class="hero">
+  <img src="assets/tunance_capa.png" alt="Festival Tunance" class="hero-img">
+    <div class="event-card">
+      <p class="date">10 e 11 de Abril, 2026</p>
+      <p class="location">📍 Baião</p>
+      <div class="countdown">
+        <div class="countdown-item">
+          <span class="number" id="days">30</span>
+          <span class="label">Dias</span>
+        </div>
+        <div class="countdown-item">
+          <span class="number" id="hours">12</span>
+          <span class="label">Horas</span>
+        </div>
+        <div class="countdown-item">
+          <span class="number" id="minutes">45</span>
+          <span class="label">Min</span>
+        </div>
+        <div class="countdown-item">
+          <span class="number" id="seconds">30</span>
+          <span class="label">Seg</span>
+        </div>
+      </div>
+      <a href="/programacao" class="btn countdown-btn">Ver programação</a>
+    </div>
+</section>
+
+<section class="about" id="sobre">
+  <h2>Sobre o Tunance</h2>
+  <p>O Tunance não é só um festival é uma verdadeira celebração da música académica, da tradição e da alegria que só as tunas conseguem trazer! </p>
+  <p>Durante este fim-de-semana incrível, as ruas e palcos enchem-se de concertos, serenatas e momentos inesquecíveis. É música, festa e convívio a cada esquina, para todos os que amam viver o espírito académico em grande estilo!</p>
+  <p>Mais do que um evento, o Tunance é uma experiência que faz bater o coração e cria memórias que ficam para sempre. Vem sentir a energia, a emoção e a magia das tunas!</p>
+
+</section>
+
+<section class="gallery">
+  <h2>Momentos Tunance</h2>
+  <div class="photo-grid">
+    <img src="assets/momento_tunance_1.jpg" alt="Tunance">
+    <img src="assets/momento_tunance_2.jpg" alt="Tunance">
+    <img src="assets/momento_tunance_3.jpg" alt="Tunance">
+    <img src="assets/momento_tunance_4.jpg" alt="Tunance">
+    <img src="assets/momento_tunance_5.jpg" alt="Tunance">
+    <img src="assets/momento_tunance_6.jpg" alt="Tunance">
+    <img src="assets/momento_tunance_7.jpg" alt="Tunance">
+    <img src="assets/momento_tunance_8.jpg" alt="Tunance">
+  </div>
+</section>
+
+<section class="info-cards" id="info">
+  <h2>Explora o Tunance</h2>
+  <div class="cards-grid">
+
+    <a class="card" (click)="goToAbout()">
+      <div class="card-icon">🎵</div>
+      <h3>Sobre o Festival</h3>
+      <p>Descobre a história e missão do Tunance</p>
+      <span class="card-arrow">→</span>
+    </a>
+
+    <a class="card" (click)="goToProgramacao()">
+    <div class="card-icon">📅</div>
+      <h3>Programação</h3>
+      <p>Vê todas as atuações e horários</p>
+      <span class="card-arrow">→</span>
+    </a>
+
+    <a class="card" (click)="goToGuia()">
+      <div class="card-icon">🗺️</div>
+      <h3>Guia Turístico</h3>
+      <p>Explora Baião e descobre onde comer e ficar</p>
+      <span class="card-arrow">→</span>
+    </a>
+
+    <!--<a routerLink="/galeria" class="card">
+      <div class="card-icon">📸</div>
+      <h3>Galeria</h3>
+      <p>Revive os melhores momentos</p>
+      <span class="card-arrow">→</span>
+    </a>
+
+    <a routerLink="/contact" class="card">
+      <div class="card-icon">✉️</div>
+      <h3>Contacto</h3>
+      <p>Fala connosco ou faz parcerias</p>
+      <span class="card-arrow">→</span>
+    </a>-->
+
+  </div>
+</section>
+
+
+
+<section class="cta">
+  <h2>Quer participar ou fazer parceria?</h2>
+  <p>Entre em contacto connosco!</p>
+  <a href="/contact" class="btn">Contactar</a>
+</section>

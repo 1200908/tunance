@@ -1,0 +1,421 @@
+
+  .hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items:  flex-start;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden; /* importante! */
+    padding-top: 40vh;
+  }
+
+  .hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* mantém */
+    object-position: top center; /* ajusta o foco da imagem */
+    z-index: -1;
+    filter: brightness(0.6);
+  }
+
+  .event-card {
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem 5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    margin: 0 10px 0 10px ;
+  }
+
+
+  .event-card .date {
+    font-size: 1.3rem;
+    color: #16A085;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .event-card .location {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+  }
+
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(22, 160, 133, 0.1);
+    border: 2px solid #16A085;
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    min-width: 120px;
+    transition: all 0.3s ease;
+  }
+
+  .countdown-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(22, 160, 133, 0.3);
+    border-color: #F39C12;
+  }
+
+  .countdown .number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #16A085;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .countdown .label {
+    font-size: 0.9rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .countdown-btn {
+    display: inline-block;
+    margin-top: 3rem;
+    padding: 1rem 2rem;
+    background-color: #16A085;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .countdown-btn:hover {
+    background-color: #F39C12;
+    transform: translateY(-2px);
+  }
+
+  .about {
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #292e38 0%, #292e38 100%);
+    text-align: center;
+  }
+
+  .about h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  .about h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #F39C12, #16A085);
+    margin: 1rem auto 0;
+    border-radius: 2px;
+  }
+
+  .about p {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* ===== INFO CARDS SECTION ===== */
+  .info-cards {
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #292e38 0%, #292e38 100%);
+    text-align: center;
+  }
+
+  .info-cards h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 3rem;
+    font-weight: 700;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(22, 160, 133, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .card:hover::before {
+    left: 100%;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    border-color: #16A085;
+    box-shadow: 0 15px 40px rgba(22, 160, 133, 0.3);
+  }
+
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: grayscale(50%);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover .card-icon {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+
+  .card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: #fff;
+  }
+
+  .card p {
+    font-size: 1rem;
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .card-arrow {
+    font-size: 1.5rem;
+    color: #16A085;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover .card-arrow {
+    transform: translateX(5px);
+    color: #F39C12;
+  }
+
+  /* ===== MINI GALLERY PREVIEW ===== */
+  .gallery-preview {
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    text-align: center;
+  }
+
+  .gallery-preview h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 3rem;
+    font-weight: 700;
+  }
+
+  .photo-grid-mini {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto 2rem;
+  }
+
+  .photo-grid-mini img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .photo-grid-mini img:hover {
+    transform: scale(1.05);
+    border-color: #16A085;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .info-cards h2,
+    .gallery-preview h2 {
+      font-size: 2rem;
+    }
+
+    .cards-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+
+    .card {
+      padding: 2rem 1.5rem;
+    }
+
+    .photo-grid-mini {
+      grid-template-columns: 1fr;
+    }
+  }
+
+
+  /* ===== GALLERY SECTION ===== */
+  .gallery {
+    padding: 5rem 5%;
+    background: #0a0a0a;
+  }
+
+  .gallery h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 700;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .photo-grid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+
+  .photo-grid img:hover {
+    transform: scale(1.05);
+    border-color: #16A085;
+    box-shadow: 0 10px 30px rgba(22, 160, 133, 0.4);
+  }
+
+  /* ===== CTA SECTION ===== */
+  .cta {
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #16A085 0%, #F39C12 100%);
+    text-align: center;
+    color: #fff;
+  }
+
+  .cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .cta p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+
+  .cta .btn {
+    background-color: #fff;
+    color: #16A085;
+    padding: 1rem 3rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .cta .btn:hover {
+    background-color: #0a0a0a;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding-top: 13vh;
+    }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .next-event h2,
+    .gallery h2,
+    .cta h2 {
+      font-size: 2rem;
+    }
+
+    .event-card  {
+      padding: 2rem 1.5rem;
+    }
+
+    .event-card h3 {
+      font-size: 2rem;
+    }
+
+    .countdown {
+      gap: 1rem;
+    }
+
+    .countdown-item {
+      min-width: 80px;
+      padding: 1rem 1.5rem;
+    }
+
+    .countdown .number {
+      font-size: 2rem;
+    }
+
+    .countdown-btn {
+      margin-top: 1rem;
+    }
+
+    .photo-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .photo-grid img {
+      height: 200px;
+    }
+
+  }

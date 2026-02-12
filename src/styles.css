@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+/* Remove margens do componente root do Angular */
+app-root {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove margens de todos os componentes Angular */
+app-home,
+app-about,
+app-contact,
+app-navbar {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}/* You can add global styles to this file, and also import other style files */
+
+@media (min-width: 769px) {
+  ::-webkit-scrollbar {
+    width: 12px; /* largura da barra */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(22, 160, 133, 0.3); /* cor da barra, 30% opaca */
+    border-radius: 10px;
+  }
+
+}
