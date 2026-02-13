@@ -19,5 +19,14 @@ export class ProgramacaoComponent {
     });
   }
 
+  goToTunas() {
+    this.router.navigate(['/programacao']).then(() => {
+      // espera até a navegação terminar
+      const el = document.querySelector('.tunas-section');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 
 }

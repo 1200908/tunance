@@ -110,13 +110,16 @@
               required
               #subject="ngModel"
             >
-              <option value="">Seleciona um assunto</option>
-              <option value="informacoes">Informações Gerais</option>
-              <option value="participacao">Quero Participar (Tuna)</option>
-              <option value="parceria">Proposta de Parceria</option>
-              <option value="patrocinio">Patrocínio</option>
-              <option value="imprensa">Imprensa/Media</option>
-              <option value="outro">Outro</option>
+              <option value="" disabled selected hidden>Seleciona um assunto</option>
+              <option value="Informacoes">ℹ️ Informações Gerais</option>
+              <option value="info-programa">📅 Informações sobre Programa</option>
+              <option value="participacao-tuna">🎵 Quero Participar com a Minha Tuna</option>
+              <option value="parceria-institucional">🤝 Parceria Institucional</option>
+              <option value="patrocinio">💼 Proposta de Patrocínio</option>
+              <option value="imprensa">📰 Imprensa/Media</option>
+              <option value="voluntariado">🙋 Voluntariado</option>
+              <option value="reclamacao">⚠️ Reclamação/Sugestão</option>
+              <option value="Outro">✉️ Outro</option>
             </select>
             <span class="error" *ngIf="subject.invalid && subject.touched">
               Assunto é obrigatório
@@ -149,7 +152,26 @@
               required
               #privacy="ngModel"
             >
-            <span>Aceito a <a href="#" class="link">política de privacidade</a> *</span>
+            <span class="checkbox-text">
+              Concordo que os meus dados sejam utilizados para contacto relacionado com o Tunance
+              <!-- Desktop -->
+            <span class="tooltip-wrapper desktop-only" tabindex="0" >
+              <span class="info-icon" (click)="$event.preventDefault()" >?</span>
+              <span class="tooltip-content" >
+                {{ privacyTooltipText }}
+              </span>
+            </span>
+
+                          <!-- Mobile -->
+            <span class="tooltip-wrapper mobile-only" tabindex="0">
+              <span class="info-icon"  (click)="toggleTooltip()">?</span>
+              <span class="tooltip-content" *ngIf="tooltipOpen">
+                <button class="tooltip-close" (click)="closeTooltip($event)">✕</button>
+                {{ privacyTooltipText }}
+              </span>
+            </span>
+
+            </span>
           </label>
           <span class="error" *ngIf="privacy.invalid && privacy.touched">
             Deves aceitar a política de privacidade

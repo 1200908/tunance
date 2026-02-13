@@ -66,4 +66,8 @@ To ensure coding practices that promote consistency across the Angular ecosystem
 ng build --configuration production --base-href "/tunance/"
 
 npx angular-cli-ghpages --dir=dist/tunance/browser
-  
+
+
+email usado no contacto: contacto.tunance@gmail.com
+emailjs
+MjEwNDIwMTJ0dW5hbmNlaW5pY2lv

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-contact',
@@ -23,40 +24,48 @@ export class ContactComponent {
   submitSuccess = false;
   submitError = false;
 
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      this.isSubmitting = true;
-      this.submitSuccess = false;
-      this.submitError = false;
+  onSubmit(form: NgForm) {if (form.valid) {
+    this.isSubmitting = true;
+    this.submitSuccess = false;
+    this.submitError = false;
 
-      // Simula envio (aqui podes integrar com um backend ou serviço de email)
-      console.log('Formulário enviado:', this.formData);
-
-      // Simula delay de envio
-      setTimeout(() => {
+    emailjs.send(
+      'service_8r2ddy1',
+      'template_hyripcp',
+      this.formData,
+      'jboLmGFfp4-uZdwMC'
+    )
+      .then(() => {
         this.isSubmitting = false;
         this.submitSuccess = true;
-
-        // Reset form após 3 segundos
-        setTimeout(() => {
-          form.resetForm();
-          this.formData = {
-            name: '',
-            email: '',
-            phone: '',
-            subject: '',
-            message: '',
-            privacy: false
-          };
-          this.submitSuccess = false;
-        }, 3000);
-      }, 1500);
-
-      // Em caso de erro (descomenta para testar)
-      // setTimeout(() => {
-      //   this.isSubmitting = false;
-      //   this.submitError = true;
-      // }, 1500);
+        form.resetForm();
+      })
+      .catch((error) => {
+        console.error(error);
+        this.isSubmitting = false;
+        this.submitError = true;
+      });
     }
+  }
+
+  privacyTooltipText = `
+
+  Ao submeter este formulário, autorizas o tratamento dos teus dados pessoais (nome, email e telefone) exclusivamente para responder ao teu contacto relacionado com o Tunance, incluindo confirmações e informações essenciais sobre o evento.
+
+  Os teus dados não serão utilizados para publicidade, promoções ou qualquer outro fim não relacionado com o teu contacto.
+
+  Podes solicitar acesso, correção ou eliminação dos teus dados a qualquer momento, enviando um email para geral@tunance.pt
+  .
+  `.trim();
+
+  tooltipOpen = false;
+
+  toggleTooltip() {
+    this.tooltipOpen = !this.tooltipOpen;
+  }
+
+  closeTooltip(event: Event) {
+    event.stopPropagation();  // impede que o click feche outra coisa
+    this.tooltipOpen = false;
   }
 }
