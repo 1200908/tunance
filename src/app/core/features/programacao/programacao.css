@@ -56,7 +56,7 @@
 
 /* Info Banner */
 .programacao-info {
-  background: #0a0a0a;
+  background: rgba(10, 10, 10, 0.93);
   padding: 3rem 5%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -100,7 +100,7 @@
 
 /* Schedule Section */
 .schedule-section {
-  background: #0a0a0a;
+  background: rgba(10, 10, 10, 0.93);
   padding: 5rem 5%;
 }
 

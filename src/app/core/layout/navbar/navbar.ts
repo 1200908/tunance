@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import {Router, RouterLink, RouterLinkActive} from '@angular/router';
+import {NavigationEnd, Router, RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +9,15 @@ import {Router, RouterLink, RouterLinkActive} from '@angular/router';
   styleUrl: './navbar.css'
 })
 export class NavbarComponent {
-  constructor(private router: Router) {}
+
+  currentRoute: string = '';
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.urlAfterRedirects;
+      }
+    });
+  }
 
   isNavbarHidden = false;
   lastScrollTop = 0;
@@ -26,6 +34,7 @@ export class NavbarComponent {
     }
     this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   }
+
 
   goToHome() {
     this.router.navigate(['/home']).then(() => {

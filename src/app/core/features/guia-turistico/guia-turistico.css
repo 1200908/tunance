@@ -56,7 +56,7 @@
 
 /* Intro Section */
 .intro-section {
-  background: #0a0a0a;
+  background: rgba(10, 10, 10, 0.93);
   padding: 4rem 5%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -82,7 +82,7 @@
 
 /* Guide Section */
 .guide-section {
-  background: #0a0a0a;
+  background: rgba(10, 10, 10, 0.93);
   padding: 3rem 5% 5rem;
 }
 
@@ -139,8 +139,8 @@
 
 .place-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
   margin-bottom: 0.8rem;
 }
 
@@ -198,6 +198,52 @@
 .place-info span {
   color: #888;
   font-size: 0.9rem;
+}
+
+
+.place-contact, .place-links {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.place-links a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.place-links a:hover {
+  color: #ffa500;
+}
+
+.place-contact  {
+  color: #ffd700;
+  text-decoration: none;
+}
+
+.guide-logo-icon-white {
+  height: 100px; /* ajusta conforme precisares */
+  width: 100px;
+  object-fit: contain;
+  padding: .2rem;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.guide-logo-icon-white:hover {
+  opacity: 1;
+  background: rgb(255, 255, 255);
+  border-color: rgba(22, 160, 133, 0.3);
+  transform: translateY(-15px);
+  box-shadow: 0 10px 30px rgba(22, 160, 133, 0.15);
 }
 
 /* Info Box */

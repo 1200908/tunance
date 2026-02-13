@@ -15,27 +15,27 @@
 
   <ul class="nav-links">
     <li>
-      <a (click)="goToHome()">
+      <a (click)="goToHome()" >
         Início
       </a>
     </li>
     <li>
-      <a (click)="goToAbout()">
+      <a (click)="goToAbout()" [class.active]="currentRoute === '/about'">
         Sobre
       </a>
     </li>
     <li>
-      <a (click)="goToProgramacao()">
+      <a (click)="goToProgramacao()" [class.active]="currentRoute === '/programacao'">
         Programação
       </a>
     </li>
     <li>
-      <a (click)="goToGuia()">
+      <a (click)="goToGuia()" [class.active]="currentRoute === '/guia-turistico'">
         Guia
       </a>
     </li>
     <li>
-      <a (click)="goToContact()">
+      <a (click)="goToContact()" [class.active]="currentRoute === '/contact'">
         Contactar
       </a>
     </li>

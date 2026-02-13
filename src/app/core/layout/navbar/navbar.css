@@ -59,6 +59,8 @@
   padding: 0;
   margin-left: auto;
   margin-right: 30px;
+  cursor: pointer;
+
 
 }
 
@@ -79,7 +81,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #F39C12, #16A085, #423cde);
+  background: linear-gradient(90deg, #F39C12, #16A085, #16A085);
   transition: width 0.3s ease;
 }
 
@@ -128,6 +130,7 @@
   .nav-links {
     gap: 1.1rem;
     margin-right: 10px;
+    cursor: auto;
   }
 
   .social-links {
