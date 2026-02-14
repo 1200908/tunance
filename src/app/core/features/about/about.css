@@ -188,6 +188,18 @@
   z-index: 1;
 }
 
+ .timeline-content:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-15px) scale(1.05);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  z-index: 10;
+}
+
+
+
 .timeline-content h3 {
   font-size: 1.3rem;
   color: #fff;
@@ -195,11 +207,19 @@
   z-index: 1;
 }
 
+.timeline-content:hover h3 {
+  color: #fff;
+}
+
 .timeline-content p {
   font-size: 1rem;
   color: #aaa;
   margin: 0;
   z-index: 1;
+}
+
+.timeline-content:hover p {
+  opacity: 1;
 }
 
 /* Stats Grid */
