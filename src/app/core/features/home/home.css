@@ -111,6 +111,8 @@
     padding: 5rem 5%;
     background: linear-gradient(135deg, #292e38 0%, #292e38 100%);
     text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .about h2 {
@@ -143,6 +145,7 @@
     padding: 5rem 5%;
     background: linear-gradient(135deg, #292e38 0%, #292e38 100%);
     text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .info-cards h2 {
@@ -294,7 +297,8 @@
   /* ===== GALLERY SECTION ===== */
   .gallery {
     padding: 5rem 5%;
-    background: #0a0a0a;
+    background: rgba(10, 10, 10, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .gallery h2 {
