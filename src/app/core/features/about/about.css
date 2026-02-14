@@ -141,7 +141,7 @@
   left: 50%;
   top: 0;
   bottom: 0;
-  width: 2px;
+  width: 4px;
   background: linear-gradient(180deg, #16A085, #F39C12);
   transform: translateX(-50%);
   z-index: 0; /* mantém atrás dos itens, mas visível */
@@ -343,8 +343,10 @@
   }
 
   .timeline::before {
-    left: 30px;
+    left: -5px;
     transform: none;
+    width: 2px;
+
   }
 
   .timeline-item {
