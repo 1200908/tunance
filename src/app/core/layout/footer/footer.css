@@ -147,8 +147,8 @@
 
   /* Logos mais pequenos em telemóvel */
   .footer-logo-icon {
-    height: 100px;
-    width: 100px;
+    height: 140px;
+    width: 140px;
   }
   /* Desativa hover em touch devices */
   .footer-logo-icon:hover,
