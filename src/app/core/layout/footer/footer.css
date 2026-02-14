@@ -46,100 +46,114 @@
 }
 
 .footer-partners {
-  margin: 20px 0 20px 0;
-  padding: 100px;
-  padding: 3rem 3rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 40px 40px;
+  padding: 1rem .5rem;
+  background: #ffffff; /* Fundo branco */
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+
+}
+
+/* Secção individual (Organização, Apoio, Patrocinadores) */
+.partners-section {
+  margin-bottom: 1rem;
 }
 
 /* Título */
 .partners-title {
-  font-size: 0.9rem;
-  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+  margin-bottom: .1rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #666;
-  text-align: center;
-  font-weight: 300;
+  color: #444;
+  font-weight: 500;
   position: relative;
 }
 
-/* Linha decorativa no título (opcional) */
+/* Linha decorativa */
 .partners-title::after {
   content: '';
   display: block;
-  width: 50px;
-  height: 1px;
+  width: 60px;
+  height: 2px;
   background: linear-gradient(90deg, transparent, #16A085, transparent);
   margin: 1rem auto 0;
+  border-radius: 2px;
 }
 
-/* Container dos logos - Grid moderno */
+/* Grid de logos */
 .partners-logos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.5rem;
-  max-width: 1900px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  max-width: 1000px;
+  margin: 0 auto 1rem; /* Espaço entre secções */
 }
-.footer-logo-icon-white {
-  height:  100%;
-  width: 100%;
-  object-fit: contain;
-  padding: .2rem;
-  background: rgb(255, 255, 255);
-  border: 1px solid rgb(255, 255, 255);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
- }
 
-/* Logos com efeito glassmorphism */
+/* Logos padrão - SEM FUNDO */
 .footer-logo-icon {
-  height:  100%;
-  width: 100%;
+  height: 150px;
+  width: 150px;
   object-fit: contain;
+  transition: all 0.35s ease;
+  opacity: 0.8;
   padding: .2rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0.6;
 }
 
+/* Logos que precisam de fundo branco (caso necessário) */
+.footer-logo-icon-white {
+  max-height: 80px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  padding: 1.2rem;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  transition: all 0.35s ease;
+}
+
+/* Hover Effect */
 .footer-logo-icon:hover {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(22, 160, 133, 0.3);
-  transform: translateY(-15px);
-  box-shadow: 0 10px 30px rgba(22, 160, 133, 0.15);
+  transform: translateY(-5px) scale(1.05);
+  filter: grayscale(0%); /* Remove preto e branco no hover */
 }
 
 .footer-logo-icon-white:hover {
-  opacity: 1;
-  background: rgb(255, 255, 255);
-  border-color: rgba(22, 160, 133, 0.3);
-  transform: translateY(-15px);
-  box-shadow: 0 10px 30px rgba(22, 160, 133, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(22, 160, 133, 0.12);
+  border-color: rgba(22, 160, 133, 0.25);
 }
+
 
 /* Responsividade */
 @media (max-width: 768px) {
 
-  .footer {
-    padding: 1rem 1rem 2rem;  /* mais espaço em cima para a logo flutuar */
+  .footer-partners {
+    margin: 20px 15px; /* Reduz margens laterais */
+    padding: 2rem 1rem; /* Mais padding interno */
+    border-radius: 1.5rem; /* Border-radius mais subtil */
   }
 
-  .footer-logo-top {
-    width: 100px;
+
+
+  /* Grid adapta-se a 2 colunas ou 1 dependendo do espaço */
+  .partners-logos {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Logos mais pequenos em telemóvel */
+  .footer-logo-icon {
     height: 100px;
+    width: 100px;
+  }
+  /* Desativa hover em touch devices */
+  .footer-logo-icon:hover,
+  .footer-logo-icon-white:hover {
+    transform: none;
   }
 
-  .footer-social a {
-    font-size: 2rem;
-    margin: 0 0.3rem;
-  }
 }
