@@ -62,7 +62,7 @@ export class AboutComponent implements AfterViewInit {
       if (progress < 1) {
         requestAnimationFrame(step);
       } else {
-        element.textContent = target.toLocaleString('pt-PT');
+        element.textContent = (element.classList.contains('plus') ? '+' : '') + target.toLocaleString('pt-PT');
       }
     };
 
