@@ -96,20 +96,18 @@
   width: 150px;
   object-fit: contain;
   transition: all 0.35s ease;
-  opacity: 0.8;
   padding: .2rem;
 }
 
 /* Logos que precisam de fundo branco (caso necessário) */
 .footer-logo-icon-white {
-  max-height: 80px;
-  width: auto;
-  max-width: 160px;
+  margin-top: 10px;
+  height: 140px;
+  width: 140px;
   object-fit: contain;
   padding: 1.2rem;
   background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
+  border-radius: 45px;
   transition: all 0.35s ease;
 }
 

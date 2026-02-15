@@ -200,26 +200,36 @@
 .place-info span {
   color: #888;
   font-size: 0.9rem;
+  margin-top: 5px;
 }
 
 
-.place-contact, .place-links {
+.place-contact {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
   text-decoration: none;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.place-links {
+  text-align: center; /* centraliza o conteúdo */
+  margin-top: 10px;
 }
 
 .place-links a {
-  color: #ffd700;
+  color: #ffffff;       /* cor neutra */
   text-decoration: none;
   font-weight: 500;
+  font-size: 32px;      /* aumenta o tamanho do ícone */
   transition: color 0.2s;
+  margin-right: 20px;
 }
 
 .place-links a:hover {
-  color: #ffa500;
+  color: #555555;       /* efeito ao passar o mouse */
 }
 
 .place-contact  {
@@ -228,8 +238,8 @@
 }
 
 .guide-logo-icon-white {
-  height: 100px; /* ajusta conforme precisares */
-  width: 100px;
+  height: 150px; /* ajusta conforme precisares */
+  width: 150px;
   object-fit: contain;
   padding: .2rem;
   background: rgb(255, 255, 255);
@@ -239,6 +249,17 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.guide-logo-icon-white-wine {
+  height: 150px; /* ajusta conforme precisares */
+  width: 150px;
+  object-fit: contain;
+  padding: .1rem;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .guide-logo-icon-white:hover {
   opacity: 1;
