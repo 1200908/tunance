@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, AfterViewInit } from '@angular/core';
 import {MainLayoutComponent} from '../../layout/main-layout/main-layout';
 import {Router} from '@angular/router';
 
@@ -10,9 +10,9 @@ import {Router} from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit  {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private elementRef: ElementRef) {}
 
   private countdownInterval: any;
 
@@ -89,4 +89,27 @@ export class HomeComponent implements OnInit, OnDestroy {
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     });
   }
+
+  ngAfterViewInit(): void {
+    this.initScrollAnimations();
+  }
+  private initScrollAnimations(): void {
+    const elements = this.elementRef.nativeElement.querySelectorAll('.hidden');
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          obs.unobserve(entry.target); // anima apenas uma vez
+        }
+      });
+    }, { threshold: 0.1 });
+
+    elements.forEach((el: any, index: number) => {
+      // delay escalonado opcional
+      setTimeout(() => observer.observe(el), index * 150);
+    });
+  }
+
+
 }
