@@ -36,14 +36,18 @@
 <section class="gallery ">
   <h2>Momentos Tunance</h2>
   <div class="photo-grid hidden">
-    <img  src="assets/momento_tunance/momento_tunance_1.jpg" alt="Tunance">
-    <img  src="assets/momento_tunance/momento_tunance_2.jpg" alt="Tunance">
-    <img  src="assets/momento_tunance/momento_tunance_9.jpg" alt="Tunance">
-    <img  src="assets/momento_tunance/momento_tunance_4.jpg" alt="Tunance">
-    <img  src="assets/momento_tunance/momento_tunance_5.jpg" alt="Tunance">
-    <img  src="assets/momento_tunance/momento_tunance_6.jpg" alt="Tunance">
-    <img  src="assets/momento_tunance/momento_tunance_7.jpg" alt="Tunance">
-    <img  src="assets/momento_tunance/momento_tunance_8.jpg" alt="Tunance">
+    <img  src="assets/momento_tunance/momento_tunance_1.jpg" alt="Tunance" (click)="openModal($event)">
+    <img  src="assets/momento_tunance/momento_tunance_2.jpg" alt="Tunance" (click)="openModal($event)">
+    <img  src="assets/momento_tunance/momento_tunance_9.jpg" alt="Tunance" (click)="openModal($event)">
+    <img  src="assets/momento_tunance/momento_tunance_4.jpg" alt="Tunance" (click)="openModal($event)">
+    <img  src="assets/momento_tunance/momento_tunance_5.jpg" alt="Tunance" (click)="openModal($event)">
+    <img  src="assets/momento_tunance/momento_tunance_6.jpg" alt="Tunance" (click)="openModal($event)">
+    <img  src="assets/momento_tunance/momento_tunance_7.jpg" alt="Tunance" (click)="openModal($event)">
+    <img  src="assets/momento_tunance/momento_tunance_8.jpg" alt="Tunance" (click)="openModal($event)">
+  </div>
+  <div id="modal" class="modal" (click)="closeModal()">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <img class="modal-content" id="modal-img">
   </div>
 </section>
 

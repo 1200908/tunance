@@ -342,6 +342,19 @@
   font-weight: 900;
 }
 
+.tuna-card a {
+  display: inline-block;
+  margin-top: 10px;
+  font-size:2rem;
+  color: #ffffff; /* cor do Instagram */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.tuna-card a:hover {
+  transform: scale(1.2);
+  color: #C13584; /* tom mais escuro ao passar o mouse */
+}
+
 /* CTA */
 .cta {
   padding: 5rem 5%;

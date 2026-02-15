@@ -111,5 +111,15 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit  {
     });
   }
 
+  openModal(event: any) {
+    const modal = this.elementRef.nativeElement.querySelector('#modal');
+    const modalImg = this.elementRef.nativeElement.querySelector('#modal-img');
+    modal.style.display = 'flex';
+    modalImg.src = event.target.src;
+  }
 
+  closeModal() {
+    const modal = this.elementRef.nativeElement.querySelector('#modal');
+    modal.style.display = 'none';
+  }
 }
