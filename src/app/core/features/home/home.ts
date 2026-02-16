@@ -164,7 +164,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   shuffledImages: string[] = [];
   private currentGroup = 0;
-  private totalGroups = 5; // 4 fotos iniciais + 2 grupos de 3 = ajusta conforme necessário
+  private totalGroups = 1; // 4 fotos iniciais + 2 grupos de 3 = ajusta conforme necessário
   private galleryObserver?: IntersectionObserver;
 
   // ============================================
@@ -290,13 +290,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // Método auxiliar para obter o grupo da imagem
   getImageGroup(index: number): number {
-    if (index < 4) return 0; // Primeiras 4 imagens (grupo 0 - sempre visíveis)
-    return Math.ceil((index - 4) / 4); // Resto em grupos de 3
+    if (index < 8) return 0; // Primeiras 4 imagens (grupo 0 - sempre visíveis)
+    return Math.ceil((index - 8) / 8); // Resto em grupos de 3
   }
 
   // Método auxiliar para saber se a imagem começa visível
   isInitiallyVisible(index: number): boolean {
-    return index < 4; // Primeiras 4 fotos visíveis
+    return index < 8; // Primeiras 4 fotos visíveis
   }
 
 
