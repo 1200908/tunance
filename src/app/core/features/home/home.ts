@@ -164,7 +164,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   shuffledImages: string[] = [];
   private currentGroup = 0;
-  private totalGroups = 6; // 4 fotos iniciais + 2 grupos de 3 = ajusta conforme necessário
+  private totalGroups = 5; // 4 fotos iniciais + 2 grupos de 3 = ajusta conforme necessário
   private galleryObserver?: IntersectionObserver;
 
   // ============================================
