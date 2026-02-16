@@ -1,28 +1,34 @@
 import { Component, OnInit, OnDestroy, ElementRef, AfterViewInit } from '@angular/core';
 import {MainLayoutComponent} from '../../layout/main-layout/main-layout';
 import {Router} from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class HomeComponent implements OnInit, OnDestroy, AfterViewInit  {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  constructor(private router: Router, private elementRef: ElementRef) {}
+  constructor(private router: Router, private elementRef: ElementRef) {
+  }
 
   private countdownInterval: any;
 
   ngOnInit() {
     this.startCountdown();
+    this.shuffleGallery();
   }
 
   ngOnDestroy() {
     if (this.countdownInterval) {
       clearInterval(this.countdownInterval);
+    }
+    if (this.galleryObserver) {
+      this.galleryObserver.disconnect();
     }
   }
 
@@ -65,34 +71,37 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit  {
   goToAbout() {
     this.router.navigate(['/about']).then(() => {
       const el = document.querySelector('.about-hero');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) el.scrollIntoView({behavior: 'smooth'});
     });
   }
 
   goToProgramacao() {
     this.router.navigate(['/programacao']).then(() => {
       const el = document.querySelector('.programacao-hero');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) el.scrollIntoView({behavior: 'smooth'});
     });
   }
 
   goToGuia() {
     this.router.navigate(['/guia-turistico']).then(() => {
       const el = document.querySelector('.guia-hero');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) el.scrollIntoView({behavior: 'smooth'});
     });
   }
 
   goToContact() {
     this.router.navigate(['/contact']).then(() => {
       const el = document.querySelector('.contact-hero');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) el.scrollIntoView({behavior: 'smooth'});
     });
   }
 
   ngAfterViewInit(): void {
     this.initScrollAnimations();
+    this.observeGalleryVisibility();
+
   }
+
   private initScrollAnimations(): void {
     const elements = this.elementRef.nativeElement.querySelectorAll('.hidden');
 
@@ -103,7 +112,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit  {
           obs.unobserve(entry.target); // anima apenas uma vez
         }
       });
-    }, { threshold: 0.1 });
+    }, {threshold: 0.1});
 
     elements.forEach((el: any, index: number) => {
       // delay escalonado opcional
@@ -122,23 +131,96 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit  {
     const modal = this.elementRef.nativeElement.querySelector('#modal');
     modal.style.display = 'none';
   }
-  private currentGroup = 0; // Controla qual grupo está sendo mostrado
-  private totalGroups = 4; // Ajuste conforme o número de grupos que tem
+
+  allImages = [
+    'assets/momento_tunance/momento_tunance_1.jpg',
+    'assets/momento_tunance/momento_tunance_2.jpg',
+    'assets/momento_tunance/momento_tunance_3.jpg',
+    'assets/momento_tunance/momento_tunance_4.jpg',
+    'assets/momento_tunance/momento_tunance_5.jpg',
+    'assets/momento_tunance/momento_tunance_6.jpg',
+    'assets/momento_tunance/momento_tunance_7.jpg',
+    'assets/momento_tunance/momento_tunance_8.jpg',
+    'assets/momento_tunance/momento_tunance_9.jpg',
+    'assets/momento_tunance/momento_tunance_10.jpg',
+    'assets/momento_tunance/momento_tunance_11.jpg',
+    'assets/momento_tunance/momento_tunance_12.jpg',
+    'assets/momento_tunance/momento_tunance_13.jpg',
+    'assets/momento_tunance/momento_tunance_14.jpg',
+    'assets/momento_tunance/momento_tunance_15.jpg',
+    'assets/momento_tunance/momento_tunance_16.jpg',
+    'assets/momento_tunance/momento_tunance_17.jpg',
+    'assets/momento_tunance/momento_tunance_18.jpg',
+    'assets/momento_tunance/momento_tunance_19.jpg',
+    'assets/momento_tunance/momento_tunance_20.jpg',
+    'assets/momento_tunance/momento_tunance_21.jpg',
+    'assets/momento_tunance/momento_tunance_22.jpg',
+    'assets/momento_tunance/momento_tunance_23.jpg',
+    'assets/momento_tunance/momento_tunance_24.jpg',
+    'assets/momento_tunance/momento_tunance_25.jpg',
+    'assets/momento_tunance/momento_tunance_26.jpg',
+    'assets/momento_tunance/momento_tunance_27.jpg'
+  ];
+
+  shuffledImages: string[] = [];
+  private currentGroup = 0;
+  private totalGroups = 6; // 4 fotos iniciais + 2 grupos de 3 = ajusta conforme necessário
+  private galleryObserver?: IntersectionObserver;
+
+  // ============================================
+  // GALERIA COM EMBARALHAMENTO AUTOMÁTICO
+  // ============================================
+
+  private shuffleGallery() {
+    // Embaralhar todas as imagens
+    this.shuffledImages = [...this.allImages].sort(() => 0.5 - Math.random());
+    this.currentGroup = 0;
+
+    // Reset dos botões quando embaralha
+    setTimeout(() => {
+      const collapseBtn = document.getElementById('collapseBtn');
+      if (collapseBtn) collapseBtn.classList.add('hidden');
+
+      const showMoreBtn = document.getElementById('showMoreBtn');
+      if (showMoreBtn) {
+        showMoreBtn.classList.remove('disabled');
+        showMoreBtn.innerHTML = '<span style="margin-right: 2px;">Ver Mais Fotos</span><span class="fa fa-plus"></span>';
+      }
+    }, 100);
+  }
+
+  private observeGalleryVisibility() {
+    const gallery = this.elementRef.nativeElement.querySelector('.gallery');
+    if (!gallery) return;
+
+    this.galleryObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Quando a galeria SAI da vista, embaralha
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+        }
+      });
+    }, {
+      threshold: 0,
+      rootMargin: '0px'
+    });
+
+    this.galleryObserver.observe(gallery);
+  }
 
   showMorePhotos() {
     this.currentGroup++;
 
     // Selecionar fotos do grupo atual
-    const photosToShow = document.querySelectorAll(
+    const photosToShow = this.elementRef.nativeElement.querySelectorAll(
       `.photo-grid img.hidden[data-group="${this.currentGroup}"]`
     );
 
-    // Mostrar fotos com animação em cascata
-    photosToShow.forEach((photo, index) => {
+    // ✨ Mostrar fotos com animação em cascata
+    photosToShow.forEach((photo: HTMLElement, index: number) => {
       setTimeout(() => {
         photo.classList.remove('hidden');
         photo.classList.add('show');
-      }, index * 50);
+      }, index * 80); // 80ms entre cada foto
     });
 
     // Mostrar o botão "Recolher" após primeira expansão
@@ -167,19 +249,20 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit  {
           block: 'nearest'
         });
       }
-    }, 300);
+    }, photosToShow.length * 80 + 100);
   }
 
-  // NOVO MÉTODO: Recolher todas as fotos
   collapsePhotos() {
     // Reset do contador de grupos
     this.currentGroup = 0;
 
-    // Esconder todas as fotos expandidas
-    const expandedPhotos = document.querySelectorAll('.photo-grid img.show');
-    expandedPhotos.forEach((photo) => {
-      photo.classList.remove('show');
-      photo.classList.add('hidden');
+    // ✅ Esconder APENAS as fotos expandidas (grupos 1+)
+    const expandedPhotos = this.elementRef.nativeElement.querySelectorAll('.photo-grid img[data-group]:not([data-group="0"])');
+    expandedPhotos.forEach((photo: HTMLElement) => {
+      if (photo.classList.contains('show')) {
+        photo.classList.remove('show');
+        photo.classList.add('hidden');
+      }
     });
 
     // Esconder o botão "Recolher"
@@ -192,12 +275,11 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit  {
     const showMoreBtn = document.getElementById('showMoreBtn');
     if (showMoreBtn) {
       showMoreBtn.classList.remove('disabled');
-      // Restaurar o conteúdo original do botão se foi alterado
-      showMoreBtn.innerHTML = '<span style="margin-right: 2px; ">Ver Mais Fotos</span><span class="fa fa-plus" ></span>';
+      showMoreBtn.innerHTML = '<span style="margin-right: 2px;">Ver Mais Fotos</span><span class="fa fa-plus"></span>';
     }
 
     // Scroll suave para o topo da galeria
-    const gallery = document.querySelector('.gallery');
+    const gallery = this.elementRef.nativeElement.querySelector('.gallery');
     if (gallery) {
       gallery.scrollIntoView({
         behavior: 'smooth',
@@ -205,5 +287,17 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit  {
       });
     }
   }
+
+  // Método auxiliar para obter o grupo da imagem
+  getImageGroup(index: number): number {
+    if (index < 4) return 0; // Primeiras 4 imagens (grupo 0 - sempre visíveis)
+    return Math.ceil((index - 4) / 4); // Resto em grupos de 3
+  }
+
+  // Método auxiliar para saber se a imagem começa visível
+  isInitiallyVisible(index: number): boolean {
+    return index < 4; // Primeiras 4 fotos visíveis
+  }
+
 
 }

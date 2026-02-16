@@ -36,14 +36,25 @@
 <section class="gallery ">
   <h2>Momentos Tunance</h2>
   <div class="photo-grid" id="photoGrid">
-    <!-- Fotos visíveis inicialmente (6-8 fotos) -->
+      <img
+        *ngFor="let img of shuffledImages; let i = index"
+        [src]="img"
+        [alt]="'Momento Tunance ' + (i)"
+        (click)="openModal($event)"
+        [attr.data-group]="getImageGroup(i)"
+        [class.hidden]="!isInitiallyVisible(i)"
+        [class.show]="isInitiallyVisible(i)">
+
+
+
+    <!-- Fotos visíveis inicialmente (6-8 fotos)
     <img src="assets/momento_tunance/momento_tunance_5.jpg" alt="Tunance" (click)="openModal($event)">
     <img src="assets/momento_tunance/momento_tunance_6.jpg" alt="Tunance" (click)="openModal($event)">
     <img src="assets/momento_tunance/momento_tunance_7.jpg" alt="Tunance" (click)="openModal($event)">
     <img src="assets/momento_tunance/momento_tunance_8.jpg" alt="Tunance" (click)="openModal($event)">
 
 
-    <!-- Grupo 1 - Escondidas (próximas 6) -->
+    Grupo 1 - Escondidas (próximas 6)
     <img class="hidden" data-group="1" src="assets/momento_tunance/momento_tunance_7.jpg" alt="Tunance" (click)="openModal($event)">
     <img class="hidden" data-group="1" src="assets/momento_tunance/momento_tunance_8.jpg" alt="Tunance" (click)="openModal($event)">
     <img class="hidden" data-group="1" src="assets/momento_tunance/momento_tunance_9.jpg" alt="Tunance" (click)="openModal($event)">
@@ -53,7 +64,7 @@
     <img class="hidden" data-group="2" src="assets/momento_tunance/momento_tunance_2.jpg" alt="Tunance" (click)="openModal($event)">
     <img class="hidden" data-group="2" src="assets/momento_tunance/momento_tunance_2.jpg" alt="Tunance" (click)="openModal($event)">
 
-    <!-- Grupo 2 - Escondidas (próximas 6) -->
+     Grupo 2 - Escondidas (próximas 6)
     <img class="hidden" data-group="3" src="assets/momento_tunance/momento_tunance_4.jpg" alt="Tunance" (click)="openModal($event)">
     <img class="hidden" data-group="3" src="assets/momento_tunance/momento_tunance_5.jpg" alt="Tunance" (click)="openModal($event)">
     <img class="hidden" data-group="3" src="assets/momento_tunance/momento_tunance_6.jpg" alt="Tunance" (click)="openModal($event)">
@@ -63,7 +74,7 @@
     <img class="hidden" data-group="4" src="assets/momento_tunance/momento_tunance_9.jpg" alt="Tunance" (click)="openModal($event)">
     <img class="hidden" data-group="4" src="assets/momento_tunance/momento_tunance_9.jpg" alt="Tunance" (click)="openModal($event)">
 
-    <!-- Adicione mais grupos conforme necessário -->
+     Adicione mais grupos conforme necessário -->
   </div>
 
   <!-- Botões de controle -->

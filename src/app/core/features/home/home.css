@@ -598,6 +598,46 @@
     }
   }
 
+
+  /* ✅ MOBILE - 2 colunas fixas */
+  @media (max-width: 768px) {
+    .gallery {
+      padding: 3rem 3%;
+    }
+
+    .gallery h2 {
+      font-size: 2rem;
+    }
+
+    .photo-grid {
+      grid-template-columns: repeat(2, 1fr); /* ✅ SEMPRE 2 colunas */
+      gap: 0.8rem;
+    }
+
+    .photo-grid img {
+      height: 180px;
+      border-radius: 10px;
+    }
+
+    /* Botões no mobile */
+    .gallery-controls {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .show-more-btn,
+    .collapse-btn {
+      width: 100%;
+      max-width: 280px;
+      padding: 12px 30px;
+      font-size: 1rem;
+      display: block;
+      margin: 5px auto;
+    }
+  }
+
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
