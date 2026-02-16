@@ -8,21 +8,21 @@
 
 <section class="programacao-info">
   <div class="info-banner">
-    <div class="info-item">
+    <div class="info-item hidden" appScrollReveal>
       <span class="icon">📅</span>
       <div>
         <strong>Data</strong>
         <p>10 e 11 de Abril, 2026</p>
       </div>
     </div>
-    <div class="info-item">
+    <div class="info-item hidden" appScrollReveal>
       <span class="icon">📍</span>
       <div>
         <strong>Local</strong>
         <p>Baião, Portugal</p>
       </div>
     </div>
-    <div class="info-item" (click)="goToTunas()">
+    <div class="info-item hidden" appScrollReveal (click)="goToTunas()">
       <span class="icon">🎵</span>
       <div>
         <strong>Tunas</strong>
@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <div class="info-item">
+    <div class="info-item hidden" appScrollReveal>
       <span class="icon"> 🎟️ </span>
       <div>
         <strong>Entrada Gratuita</strong>
@@ -41,7 +41,7 @@
 </section>
 
 <section class="tunas-section">
-  <div class="container">
+  <div class="container hidden" appScrollReveal>
     <h2>Tunas Confirmadas</h2>
     <div class="tunas-grid">
       <div class="tuna-card">
@@ -91,7 +91,7 @@
 </section>
 
 <section class="schedule-section">
-  <div class="container">
+  <div class="container hidden" appScrollReveal>
     <h2>Horário do Festival</h2>
 
     <!-- Palco Principal -->

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
+import {ScrollRevealDirective} from '../../../shared/directives/scroll-reveal.directive';
 
 
 @Component({
   selector: 'app-programacao',
-  imports: [],
+  imports: [ScrollRevealDirective],
   templateUrl: './programacao.html',
   styleUrl: './programacao.css',
 })

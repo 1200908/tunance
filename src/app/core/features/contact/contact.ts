@@ -3,10 +3,11 @@ import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import emailjs from '@emailjs/browser';
+import {ScrollRevealDirective} from '../../../shared/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-contact',
-  imports: [FormsModule, CommonModule ],
+  imports: [FormsModule, CommonModule, ScrollRevealDirective ],
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
