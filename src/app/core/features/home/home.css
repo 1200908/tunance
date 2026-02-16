@@ -434,6 +434,101 @@
     }
   }
 
+  .photo-grid img.hidden {
+    display: none;
+  }
+
+  /* Animação quando aparecem */
+  .photo-grid img.show {
+    animation: fadeInUp 0.5s ease forwards;
+  }
+  /* Container dos botões */
+  .gallery-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+
+  /* Estilos base dos botões */
+  .show-more-btn,
+  .collapse-btn {
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+  }
+
+  /* Botão Ver Mais - Gradiente Roxo */
+  .show-more-btn {
+    display: inline-flex;
+    background: linear-gradient(135deg, #16A085 0%, #0a5949 100%);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    animation: bounce 2s infinite;
+  }
+
+  .show-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    animation: none; /* Para o bounce no hover */
+  }
+
+  /* Botão Recolher - Gradiente Azul/Verde */
+  .collapse-btn {
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+  }
+
+  .collapse-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+  }
+
+  /* Esconder botões quando necessário */
+  .show-more-btn.hidden,
+  .collapse-btn.hidden {
+    display: none;
+  }
+
+  /* Ícones dos botões */
+  .show-more-btn .icon,
+  .collapse-btn .icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    font-weight: bold;
+  }
+
+  .show-more-btn:hover .icon {
+    transform: rotate(180deg);
+  }
+
+  .collapse-btn:hover .icon {
+    transform: translateY(-3px);
+  }
+
+  /* Quando o botão é desabilitado (todas fotos mostradas) */
+  .show-more-btn.disabled {
+    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+    cursor: not-allowed;
+    opacity: 0.6;
+    animation: none;
+  }
+
+  .show-more-btn.disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(156, 163, 175, 0.3);
+  }
+
+
   .hidden {
     opacity: 0;
     transform: translateY(-50px);
@@ -485,3 +580,43 @@
     color: #ddd;
   }
 
+  /* Responsivo - Mobile */
+  @media (max-width: 768px) {
+    .gallery-controls {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .show-more-btn,
+    .collapse-btn {
+      width: 100%;
+      max-width: 280px;
+      padding: 12px 30px;
+      font-size: 1rem;
+      display: block;
+      margin: 3px auto ;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }

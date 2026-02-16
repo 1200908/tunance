@@ -35,15 +35,48 @@
 
 <section class="gallery ">
   <h2>Momentos Tunance</h2>
-  <div class="photo-grid hidden">
-    <img  src="assets/momento_tunance/momento_tunance_1.jpg" alt="Tunance" (click)="openModal($event)">
-    <img  src="assets/momento_tunance/momento_tunance_2.jpg" alt="Tunance" (click)="openModal($event)">
-    <img  src="assets/momento_tunance/momento_tunance_9.jpg" alt="Tunance" (click)="openModal($event)">
-    <img  src="assets/momento_tunance/momento_tunance_4.jpg" alt="Tunance" (click)="openModal($event)">
-    <img  src="assets/momento_tunance/momento_tunance_5.jpg" alt="Tunance" (click)="openModal($event)">
-    <img  src="assets/momento_tunance/momento_tunance_6.jpg" alt="Tunance" (click)="openModal($event)">
-    <img  src="assets/momento_tunance/momento_tunance_7.jpg" alt="Tunance" (click)="openModal($event)">
-    <img  src="assets/momento_tunance/momento_tunance_8.jpg" alt="Tunance" (click)="openModal($event)">
+  <div class="photo-grid" id="photoGrid">
+    <!-- Fotos visíveis inicialmente (6-8 fotos) -->
+    <img src="assets/momento_tunance/momento_tunance_5.jpg" alt="Tunance" (click)="openModal($event)">
+    <img src="assets/momento_tunance/momento_tunance_6.jpg" alt="Tunance" (click)="openModal($event)">
+    <img src="assets/momento_tunance/momento_tunance_7.jpg" alt="Tunance" (click)="openModal($event)">
+    <img src="assets/momento_tunance/momento_tunance_8.jpg" alt="Tunance" (click)="openModal($event)">
+
+
+    <!-- Grupo 1 - Escondidas (próximas 6) -->
+    <img class="hidden" data-group="1" src="assets/momento_tunance/momento_tunance_7.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="1" src="assets/momento_tunance/momento_tunance_8.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="1" src="assets/momento_tunance/momento_tunance_9.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="1" src="assets/momento_tunance/momento_tunance_1.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="2" src="assets/momento_tunance/momento_tunance_2.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="2" src="assets/momento_tunance/momento_tunance_3.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="2" src="assets/momento_tunance/momento_tunance_2.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="2" src="assets/momento_tunance/momento_tunance_2.jpg" alt="Tunance" (click)="openModal($event)">
+
+    <!-- Grupo 2 - Escondidas (próximas 6) -->
+    <img class="hidden" data-group="3" src="assets/momento_tunance/momento_tunance_4.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="3" src="assets/momento_tunance/momento_tunance_5.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="3" src="assets/momento_tunance/momento_tunance_6.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="3" src="assets/momento_tunance/momento_tunance_7.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="4" src="assets/momento_tunance/momento_tunance_8.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="4" src="assets/momento_tunance/momento_tunance_9.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="4" src="assets/momento_tunance/momento_tunance_9.jpg" alt="Tunance" (click)="openModal($event)">
+    <img class="hidden" data-group="4" src="assets/momento_tunance/momento_tunance_9.jpg" alt="Tunance" (click)="openModal($event)">
+
+    <!-- Adicione mais grupos conforme necessário -->
+  </div>
+
+  <!-- Botões de controle -->
+  <div class="gallery-controls">
+    <button class="show-more-btn" id="showMoreBtn" (click)="showMorePhotos()">
+      <span style="margin-right: 2px; ">Ver Mais Fotos</span>
+      <span class="fa fa-plus" ></span>
+    </button>
+
+    <button class="collapse-btn hidden " id="collapseBtn" (click)="collapsePhotos()">
+      <span style="margin-right: 2px; ">Recolher </span>
+      <span class="fa fa-arrow-up"></span>
+    </button>
   </div>
   <div id="modal" class="modal" (click)="closeModal()">
     <span class="close" (click)="closeModal()">&times;</span>

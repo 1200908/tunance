@@ -122,4 +122,88 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit  {
     const modal = this.elementRef.nativeElement.querySelector('#modal');
     modal.style.display = 'none';
   }
+  private currentGroup = 0; // Controla qual grupo está sendo mostrado
+  private totalGroups = 4; // Ajuste conforme o número de grupos que tem
+
+  showMorePhotos() {
+    this.currentGroup++;
+
+    // Selecionar fotos do grupo atual
+    const photosToShow = document.querySelectorAll(
+      `.photo-grid img.hidden[data-group="${this.currentGroup}"]`
+    );
+
+    // Mostrar fotos com animação em cascata
+    photosToShow.forEach((photo, index) => {
+      setTimeout(() => {
+        photo.classList.remove('hidden');
+        photo.classList.add('show');
+      }, index * 50);
+    });
+
+    // Mostrar o botão "Recolher" após primeira expansão
+    const collapseBtn = document.getElementById('collapseBtn');
+    if (collapseBtn && collapseBtn.classList.contains('hidden')) {
+      setTimeout(() => {
+        collapseBtn.classList.remove('hidden');
+        collapseBtn.style.animation = 'fadeInUp 0.5s ease forwards';
+      }, 300);
+    }
+
+    // Se mostrou todas as fotos, desabilitar o botão "Ver Mais"
+    if (this.currentGroup >= this.totalGroups) {
+      const showMoreBtn = document.getElementById('showMoreBtn');
+      if (showMoreBtn) {
+        showMoreBtn.classList.add('disabled');
+        showMoreBtn.textContent = 'Todas as fotos visíveis';
+      }
+    }
+
+    // Scroll suave para as novas fotos
+    setTimeout(() => {
+      if (photosToShow.length > 0) {
+        photosToShow[0].scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest'
+        });
+      }
+    }, 300);
+  }
+
+  // NOVO MÉTODO: Recolher todas as fotos
+  collapsePhotos() {
+    // Reset do contador de grupos
+    this.currentGroup = 0;
+
+    // Esconder todas as fotos expandidas
+    const expandedPhotos = document.querySelectorAll('.photo-grid img.show');
+    expandedPhotos.forEach((photo) => {
+      photo.classList.remove('show');
+      photo.classList.add('hidden');
+    });
+
+    // Esconder o botão "Recolher"
+    const collapseBtn = document.getElementById('collapseBtn');
+    if (collapseBtn) {
+      collapseBtn.classList.add('hidden');
+    }
+
+    // Re-ativar o botão "Ver Mais"
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    if (showMoreBtn) {
+      showMoreBtn.classList.remove('disabled');
+      // Restaurar o conteúdo original do botão se foi alterado
+      showMoreBtn.innerHTML = '<span style="margin-right: 2px; ">Ver Mais Fotos</span><span class="fa fa-plus" ></span>';
+    }
+
+    // Scroll suave para o topo da galeria
+    const gallery = document.querySelector('.gallery');
+    if (gallery) {
+      gallery.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+
 }
