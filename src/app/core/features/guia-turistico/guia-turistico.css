@@ -103,6 +103,13 @@
 
 .category-icon {
   font-size: 3rem;
+  color: #FFFFFF;
+}
+
+.category-icon img {
+  color: #FFFFFF;
+  height: 65px; /* ajusta conforme precisares */
+  width: 65px;
 }
 
 .category-header h2 {
@@ -261,7 +268,8 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.guide-logo-icon-white:hover {
+.guide-logo-icon-white:hover,
+.guide-logo-icon-white-wine:hover {
   opacity: 1;
   background: rgb(255, 255, 255);
   border-color: rgba(22, 160, 133, 0.3);
