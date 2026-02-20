@@ -97,6 +97,7 @@
   object-fit: contain;
   transition: all 0.35s ease;
   padding: .2rem;
+  border-radius: 45px;
 }
 
 /* Logos que precisam de fundo branco (caso necessário) */
@@ -118,10 +119,11 @@
   filter: grayscale(0%); /* Remove preto e branco no hover */
 }
 
+.footer-logo-icon:hover,
 .footer-logo-icon-white:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(22, 160, 133, 0.12);
   border-color: rgba(22, 160, 133, 0.25);
+  transform: scale(1.1);
 }
 
 
