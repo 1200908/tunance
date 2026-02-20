@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, AfterViewInit, PLATFORM_ID, Inject, ViewChild} from '@angular/core';
 import {MainLayoutComponent} from '../../layout/main-layout/main-layout';
 import {Router} from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import Typed from 'typed.js';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  constructor(private router: Router, private elementRef: ElementRef) {
+  constructor(private router: Router, private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) {
   }
 
   private countdownInterval: any;
@@ -99,6 +100,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit(): void {
     this.initScrollAnimations();
     this.observeGalleryVisibility();
+    this.initTyped();
 
   }
 
@@ -299,5 +301,31 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     return index < 8; // Primeiras 4 fotos visíveis
   }
 
+  @ViewChild('typedElement') typedElement?: ElementRef;
+
+  typed?: Typed;
+
+  initTyped(): void {
+    if (isPlatformBrowser(this.platformId) && this.typedElement) {
+      const element = this.typedElement.nativeElement;
+      setTimeout(() => {
+        this.typed = new Typed(element, {
+          strings: [
+            'Esepus tunae',
+            'TauLF',
+            'TaipaM',
+            'MAsculina',
+            'Femenina'
+          ],
+          typeSpeed: 50,
+          backSpeed: 30,
+          backDelay: 1500,
+          loop: true,
+          showCursor: true,
+          smartBackspace: false
+        });
+      }, 50);
+    }
+  }
 
 }

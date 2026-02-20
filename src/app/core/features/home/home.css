@@ -46,8 +46,9 @@
   .event-card .location {
     font-size: 1.1rem;
     color: #ccc;
-    margin-bottom: 1.5rem;
+    margin-bottom: .3rem;
   }
+
 
   .countdown {
     display: flex;
