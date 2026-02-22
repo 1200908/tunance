@@ -208,6 +208,9 @@
   font-size: 1rem;
   transition: all 0.3s ease;
   font-family: inherit;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
@@ -216,8 +219,8 @@
   outline: none;
   border-color: #16A085;
   background: rgb(41, 46, 60);
-  padding: 16px;
-  border-radius: 12px;
+  padding: 0.9rem 1.2rem;
+  border-radius: 10px;
 }
 
 .form-group textarea {
