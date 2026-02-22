@@ -314,8 +314,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
             'Esepus tunae',
             'TauLF',
             'TaipaM',
-            'MAsculina',
-            'Femenina'
+            '',
+            ''
           ],
           typeSpeed: 50,
           backSpeed: 30,

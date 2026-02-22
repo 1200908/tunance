@@ -492,3 +492,14 @@
     height: 300px;
   }
 }
+
+
+@media (max-width: 380px) {
+  .guide-section {
+    padding: 2rem .5rem .5rem;
+  }
+
+  .place-card {
+    padding: .5rem;
+  }
+}
