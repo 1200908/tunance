@@ -107,7 +107,6 @@
   width: 140px;
   object-fit: contain;
   padding: 1.2rem;
-  background: #ffffff;
   border-radius: 45px;
   transition: all 0.35s ease;
 }
@@ -146,7 +145,7 @@
   }
 
   /* Logos mais pequenos em telemóvel */
-  .footer-logo-icon {
+  .footer-logo-icon  {
     height: 140px;
     width: 140px;
   }
@@ -157,3 +156,20 @@
   }
 
 }
+
+
+@media (max-width: 480px) {
+  .footer-logo-icon  {
+    height: 120px;
+    width: 120px;
+  }
+
+  .footer-logo-icon-white  {
+    height: 100px;
+    width: 100px;
+    padding: .2rem;
+    border-radius: 25px;
+
+  }
+}
+
