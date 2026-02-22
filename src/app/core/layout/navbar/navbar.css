@@ -143,3 +143,11 @@
     font-size: 1.5rem;
   }
 }
+
+@media (max-width: 360px) {
+  .nav-links {
+    gap: .6rem;
+    margin-left: auto;
+    margin-right: 10px;
+  }
+}
