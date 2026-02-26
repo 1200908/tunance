@@ -131,7 +131,11 @@
     <div class="carousel-track-container ">
       <div
         class="carousel-track"
-        [style.transform]="'translateX(-' + (currentIndex * slideWidth) + 'px)'"
+        [style.transform]="'translateX(' + (-(currentIndex * slideWidth) + carouselDragOffsetX) + 'px)'"
+        [style.transition]="isCarouselDragging ? 'none' : 'transform 0.3s ease'"
+        (touchstart)="onCarouselTouchStart($event)"
+        (touchmove)="onCarouselTouchMove($event)"
+        (touchend)="onCarouselTouchEnd()"
       >
         <div
           class="carousel-slide"

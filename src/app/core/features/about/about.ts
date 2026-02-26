@@ -155,11 +155,30 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.modalImageSrc = '';
   }
 
-  private shuffle(arr: string[]): string[] {
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
+  private carouselTouchStartX = 0;
+  carouselDragOffsetX = 0;
+  isCarouselDragging = false;
+
+  onCarouselTouchStart(event: TouchEvent): void {
+    this.carouselTouchStartX = event.touches[0].clientX;
+    this.isCarouselDragging = true;
+    this.carouselDragOffsetX = 0;
+  }
+
+  onCarouselTouchMove(event: TouchEvent): void {
+    if (!this.isCarouselDragging) return;
+    this.carouselDragOffsetX = event.touches[0].clientX - this.carouselTouchStartX;
+  }
+
+  onCarouselTouchEnd(): void {
+    this.isCarouselDragging = false;
+
+    if (this.carouselDragOffsetX < -50) {
+      this.nextSlide();
+    } else if (this.carouselDragOffsetX > 50) {
+      this.prevSlide();
     }
-    return arr;
+
+    this.carouselDragOffsetX = 0;
   }
 }
