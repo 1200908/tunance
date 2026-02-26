@@ -77,6 +77,8 @@
   color: #fff;
   margin-bottom: 1.5rem;
   font-weight: 700;
+  text-align: center;
+
 }
 
 .about-section p {
@@ -249,6 +251,11 @@
   background: rgba(22, 160, 133, 0.1);
   border: 2px solid #16A085;
   border-radius: 15px;
+}
+.stat-item:hover {
+  transform: translateY(-5px);
+  border-color: #16A085;
+  box-shadow: 0 10px 30px rgba(22, 160, 133, 0.3);
 }
 
 .stat-number {
@@ -462,4 +469,234 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+/* ============================================
+   GALLERY CAROUSEL - Momentos Tunance
+   ============================================ */
+
+.gallery {
+  padding: 60px 20px;
+  text-align: center;
+  background: rgba(10, 10, 10, 0.85);
+  position: relative;
+
+    h2 {
+    font-weight: 700;
+    color: #fff; /* dourado - cor principal Tunance */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #c9a84c;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+  }
+}
+
+/* ---- Wrapper do Carrossel ---- */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ---- Setas de Navegação ---- */
+.carousel-arrow {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #c9a84c;
+  background: transparent;
+  color: #c9a84c;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, color 0.25s, transform 0.2s, opacity 0.25s;
+  z-index: 10;
+
+  &:hover:not(.disabled) {
+    background: #c9a84c;
+    color: #1a1a1a;
+    transform: scale(1.1);
+  }
+
+  &.disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+  @media (max-width: 600px) {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ---- Container da Track (janela visível) ---- */
+.carousel-track-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 1080px;
+}
+
+/* ---- Track (desliza horizontalmente) ---- */
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* ---- Cada Cartaz ---- */
+.carousel-slide {
+  flex: 0 0 calc(25% - 15px);
+
+@media (max-width: 900px) {
+  flex: 0 0 calc(50% - 10px);
+}
+
+  @media (max-width: 600px) {
+    flex: 0 0 100%;
+  }
+
+  @media (max-width: 380px) {
+    flex: 0 0 100%;
+  }
+}
+
+/* ---- Frame / Moldura do Poster ---- */
+.poster-frame {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid rgba(201, 168, 76, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  aspect-ratio: 2 / 3; /* proporção de cartaz */
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  /* Overlay de hover */
+  .poster-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(201, 168, 76, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    .fa {
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+  }
+
+  &:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 36px rgba(201, 168, 76, 0.35);
+    border-color: #c9a84c;
+
+    img {
+      transform: scale(1.05);
+    }
+
+    .poster-overlay {
+      opacity: 1;
+    }
+  }
+}
+
+/* ---- Dots / Indicadores ---- */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(201, 168, 76, 0.3);
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+
+    &.active {
+      background: #c9a84c;
+      transform: scale(1.35);
+    }
+
+    &:hover:not(.active) {
+      background: rgba(201, 168, 76, 0.6);
+    }
+  }
+}
+
+/* ---- Modal ---- */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    display: flex;
+    animation: fadeInModal 0.25s ease;
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: #c9a84c;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.2s, color 0.2s;
+
+    &:hover {
+      transform: rotate(90deg);
+      color: #fff;
+    }
+  }
+
+  .modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 0 60px rgba(201, 168, 76, 0.25);
+  }
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

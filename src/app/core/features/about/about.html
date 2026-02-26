@@ -118,8 +118,61 @@
   </div>
 </section>
 
+<section class="gallery ">
+  <h2>Cartazes Tunances</h2>
+
+  <div class="carousel-wrapper hidden" appScrollReveal>
+    <!-- Seta Esquerda -->
+    <button class="carousel-arrow left" (click)="prevSlide()" [class.disabled]="currentIndex === 0">
+      <span class="fa fa-chevron-left"></span>
+    </button>
+
+    <!-- Track de Cartazes -->
+    <div class="carousel-track-container ">
+      <div
+        class="carousel-track"
+        [style.transform]="'translateX(-' + (currentIndex * slideWidth) + 'px)'"
+      >
+        <div
+          class="carousel-slide"
+          *ngFor="let img of images; let i = index"
+          (click)="openModal($event, img)"
+        >
+          <div class="poster-frame">
+            <img [src]="img" [alt]="'Momento Tunance ' + (i + 1)" />
+            <div class="poster-overlay">
+              <span class="fa fa-search-plus"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seta Direita -->
+    <button class="carousel-arrow right" (click)="nextSlide()" [class.disabled]="currentIndex >= maxIndex">
+      <span class="fa fa-chevron-right"></span>
+    </button>
+  </div>
+
+  <!-- Indicadores / Dots -->
+  <div class="carousel-dots">
+    <span
+      *ngFor="let dot of dotsArray; let i = index"
+      class="dot"
+      [class.active]="i === activeDot"
+      (click)="goToSlide(i)"
+    ></span>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" [class.active]="isModalOpen" (click)="closeModal()">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <img class="modal-content" [src]="modalImageSrc" />
+  </div>
+</section>
+
 <section class="cta">
-  <h2>Quer fazer parte desta aventura?</h2>
-  <p>Contacte-nos para participar ou fazer parceria</p>
+  <h2>Ajuda a escrever a história do Tunance</h2>
+  <p>Participa, apoia ou colabora com o festival e faz parte desta tradição</p>
   <a href="./contact" class="btn">Entrar em Contacto</a>
 </section>

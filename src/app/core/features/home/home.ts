@@ -3,12 +3,13 @@ import {MainLayoutComponent} from '../../layout/main-layout/main-layout';
 import {Router} from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import Typed from 'typed.js';
+import {ScrollRevealDirective} from '../../../shared/directives/scroll-reveal.directive';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ScrollRevealDirective],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
