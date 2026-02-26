@@ -560,6 +560,9 @@
   gap: 20px;
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
+  @media (max-width: 600px) {
+    gap: 19.5px;
+  }
 }
 
 /* ---- Cada Cartaz ---- */
@@ -571,7 +574,7 @@
 }
 
   @media (max-width: 600px) {
-    flex: 0 0 100%;
+    flex: 0 0 calc(100% - 0px);
   }
 
   @media (max-width: 380px) {
