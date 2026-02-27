@@ -1,5 +1,4 @@
-
-  .hero {
+.hero {
     position: relative;
     height: 100vh;
     display: flex;
@@ -9,6 +8,8 @@
     color: #fff;
     overflow: hidden; /* importante! */
     padding-top: 40vh;
+  z-index: -2;
+  background: linear-gradient(135deg, #292e38 0%, #292e38 100%);
   }
 
   .hero-img {
@@ -21,6 +22,7 @@
     object-position: top center; /* ajusta o foco da imagem */
     z-index: -1;
     filter: brightness(0.6);
+    background-color: #0a0a0a;
   }
 
   .event-card {

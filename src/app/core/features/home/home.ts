@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, AfterViewInit, PLATFORM_ID, Inject, ViewChild} from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, AfterViewInit, PLATFORM_ID, Inject, ViewChild, HostListener} from '@angular/core';
 import {MainLayoutComponent} from '../../layout/main-layout/main-layout';
 import {Router} from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
