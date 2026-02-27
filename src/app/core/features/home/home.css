@@ -1,42 +1,41 @@
+.hero-img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: -1; /* ← atrás de tudo */
+  filter: brightness(0.6);
+  pointer-events: none;
+}
+
 .hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items:  flex-start;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-    overflow: hidden; /* importante! */
-    padding-top: 40vh;
-  z-index: -2;
-  background: linear-gradient(135deg, #292e38 0%, #292e38 100%);
-  }
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding-top: 40vh;
+  /* ← sem z-index, sem overflow:hidden */
+  background: transparent; /* ← transparente para ver a imagem */
+}
 
-  .hero-img {
-    position: fixed; /* absolute fica presa assim fica no fundo */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* mantém */
-    object-position: top center; /* ajusta o foco da imagem */
-    z-index: -1;
-    filter: brightness(0.6);
-    background-color: #0a0a0a;
-  }
-
-  .event-card {
-    background: rgba(255, 255, 255, 0.01);
-    backdrop-filter: blur(3px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 2rem 5rem;
-    max-width: 800px;
-    margin: 0 auto;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    margin: 0 10px 0 10px ;
-  }
-
+.event-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem 5rem;
+  max-width: 800px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  margin: 0 10px;
+}
 
   .event-card .date {
     font-size: 1.3rem;
