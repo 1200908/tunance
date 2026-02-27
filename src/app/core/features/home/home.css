@@ -12,7 +12,7 @@
   }
 
   .hero-img {
-    position: absolute;
+    position: fixed; /* absolute fica presa assim fica no fundo */
     top: 0;
     left: 0;
     width: 100%;
