@@ -276,6 +276,11 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
+    .hero-img {
+      height: 100vh;       /* sempre relativo à viewport */
+      max-height: 100vh;   /* garante que não ultrapasse a tela */
+      min-height: 100vh;   /* garante que sempre cubra a tela */
+    }
     .info-cards h2,
     .gallery-preview h2 {
       font-size: 2rem;
@@ -300,7 +305,7 @@
   /* ===== GALLERY SECTION ===== */
   .gallery {
     padding: 5rem 5%;
-    background: rgba(10, 10, 10, 0.85);
+    background: rgba(10, 10, 10, 0.80);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
