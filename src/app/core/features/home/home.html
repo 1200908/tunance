@@ -43,6 +43,7 @@
         *ngFor="let img of shuffledImages; let i = index"
         [src]="img"
         [alt]="'Momento Tunance ' + (i)"
+        loading="lazy"
         (click)="openModal($event)"
         [attr.data-group]="getImageGroup(i)"
         [class.hidden]="!isInitiallyVisible(i)"
