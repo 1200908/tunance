@@ -12,10 +12,10 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'about', component: AboutComponent },
+      { path: 'sobre', component: AboutComponent },
       { path: 'programacao', component: ProgramacaoComponent },
       { path: 'guia-turistico', component: GuiaTuristicoComponent },
-      { path: 'contact', component: ContactComponent },
+      { path: 'contactar', component: ContactComponent },
       { path: '**', redirectTo: '' }
     ]
   }

@@ -43,7 +43,7 @@ export class NavbarComponent {
     });
   }
   goToAbout() {
-    this.router.navigate(['/about']).then(() => {
+    this.router.navigate(['/sobre']).then(() => {
       const el = document.querySelector('.about-hero');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     });
@@ -64,7 +64,7 @@ export class NavbarComponent {
   }
 
   goToContact() {
-    this.router.navigate(['/contact']).then(() => {
+    this.router.navigate(['/contactar']).then(() => {
       const el = document.querySelector('.contact-hero');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     });
