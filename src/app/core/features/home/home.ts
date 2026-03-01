@@ -15,6 +15,8 @@ import {ScrollRevealDirective} from '../../../shared/directives/scroll-reveal.di
 })
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
+  currentRoute: string = '';
+
   constructor(private router: Router, private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) {
   }
 
@@ -71,7 +73,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   goToAbout() {
-    this.router.navigate(['/about']).then(() => {
+    this.router.navigate(['/sobre']).then(() => {
       const el = document.querySelector('.about-hero');
       if (el) el.scrollIntoView({behavior: 'smooth'});
     });
