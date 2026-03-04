@@ -85,15 +85,15 @@
 /* Grid de logos */
 .partners-logos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   max-width: 1000px;
   margin: 0 auto 1rem; /* Espaço entre secções */
 }
 
 /* Logos padrão - SEM FUNDO */
 .footer-logo-icon {
-  height: 150px;
-  width: 150px;
+  height: 170px;
+  width: 170px;
   object-fit: contain;
   transition: all 0.35s ease;
   padding: .2rem;
@@ -103,8 +103,8 @@
 /* Logos que precisam de fundo branco (caso necessário) */
 .footer-logo-icon-white {
   margin-top: 10px;
-  height: 140px;
-  width: 140px;
+  height: 160px;
+  width: 160px;
   object-fit: contain;
   padding: 1.2rem;
   border-radius: 45px;
@@ -146,8 +146,8 @@
 
   /* Logos mais pequenos em telemóvel */
   .footer-logo-icon  {
-    height: 140px;
-    width: 140px;
+    height: 150px;
+    width: 150px;
   }
   /* Desativa hover em touch devices */
   .footer-logo-icon:hover,
@@ -160,13 +160,13 @@
 
 @media (max-width: 480px) {
   .footer-logo-icon  {
-    height: 120px;
-    width: 120px;
+    height: 130px;
+    width: 130px;
   }
 
   .footer-logo-icon-white  {
-    height: 100px;
-    width: 100px;
+    height: 110px;
+    width: 110px;
     padding: .2rem;
     border-radius: 25px;
 
