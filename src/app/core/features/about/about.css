@@ -155,7 +155,7 @@
 .timeline-item {
   display: flex;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   position: relative;
   z-index: 1;
 }
@@ -170,8 +170,8 @@
 
 
 .timeline-item .timeline-content {
-  background-color: #292E38FF; /* ou a cor do fundo da sua página */
-  padding: 0.5rem; /* opcional, para dar espaço */
+  background-color: rgba(41, 46, 56, 0.95);
+
 }
 
 .year {
@@ -183,11 +183,13 @@
 }
 
 .timeline-content {
+  font-family: 'Roboto', sans-serif; /* Fonte moderna e legível */
   flex: 1;
   background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 15px;
-  margin: 0 2rem;
+  margin: 0 2rem 2rem;  /* separação entre itens */
+  line-height: 1.6;     /* altura de linha maior para conforto */
   z-index: 1;
 
 
@@ -211,6 +213,7 @@
 
 
 .timeline-content h3 {
+  font-family: 'Merriweather', serif; /* Fonte com mais personalidade para títulos */
   font-size: 1.7rem;  /* maior */
   font-weight: 700;   /* mais bold */
   margin-bottom: 0.6rem;
@@ -224,7 +227,7 @@
 
 .timeline-content p {
   font-size: 1rem;
-  color: #aaaaaa;
+  color: #fff;
   margin: 0;
   z-index: 1;
 }
@@ -253,6 +256,7 @@
   background: rgba(22, 160, 133, 0.1);
   border: 2px solid #16A085;
   border-radius: 15px;
+  max-width: 300px;
 }
 .stat-item:hover {
   transform: translateY(-5px);
