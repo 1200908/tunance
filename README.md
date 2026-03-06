@@ -70,7 +70,7 @@ npx angular-cli-ghpages --dir=dist/tunance/browser
 ## Production comands
 ng build --configuration production --base-href "/"
 
-npx angular-cli-ghpages --dir=dist/tunance/browser --cname www.tunance.pt
+npx angular-cli-ghpages --dir=dist/tunance/browser --cname tunance.pt
 
 email usado no contacto: contacto.tunance@gmail.com
 emailjs

@@ -71,6 +71,7 @@
               required
               #name="ngModel"
               placeholder="O teu nome completo"
+              maxlength="50"
             >
             <span class="error" *ngIf="name.invalid && name.touched">
               Nome é obrigatório
@@ -88,6 +89,7 @@
               email
               #email="ngModel"
               placeholder="seuemail@exemplo.com"
+              maxlength="50"
             >
             <span class="error" *ngIf="email.invalid && email.touched">
               Email válido é obrigatório
@@ -104,6 +106,7 @@
               name="phone"
               [(ngModel)]="formData.phone"
               placeholder="+351 912 345 678"
+              maxlength="50"
             >
           </div>
 
@@ -143,9 +146,13 @@
             required
             #message="ngModel"
             placeholder="Escreve aqui a tua mensagem..."
+            maxlength="1500"
           ></textarea>
           <span class="error" *ngIf="message.invalid && message.touched">
             Mensagem é obrigatória
+          </span>
+          <span class="info" *ngIf="formData.message && formData.message.length > 0">
+            {{ formData.message.length }} / 1500 caracteres
           </span>
         </div>
 

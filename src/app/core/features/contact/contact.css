@@ -240,6 +240,15 @@
   margin-top: 0.5rem;
 }
 
+.info {
+  display: block;               /* fica em linha própria */
+  font-size: 0.85rem;           /* tamanho pequeno, consistente com .error */
+  color: #aaa;                   /* cor clara para não competir com o texto principal */
+  margin-top: 0.3rem;           /* pequeno espaçamento abaixo do campo */
+  text-align: right;            /* opcional: alinha à direita */
+  font-style: italic;           /* opcional: deixa mais sutil */
+}
+
 .checkbox-group {
   margin: 2rem 0;
 }

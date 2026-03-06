@@ -12,7 +12,14 @@ import {ScrollRevealDirective} from '../../../shared/directives/scroll-reveal.di
   styleUrl: './contact.css',
 })
 export class ContactComponent {
-  formData = {
+  formData: {
+    name: string;
+    email: string;
+    phone: string;
+    subject: string;
+    message: string;
+    privacy: boolean;
+  } = {
     name: '',
     email: '',
     phone: '',
