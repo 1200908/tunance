@@ -15,6 +15,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.initCounterAnimation();
     this.recalculateSlideWidth();
+    this.initTimelineAnimation();
   }
 
   private initCounterAnimation(): void {
@@ -70,6 +71,33 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     };
 
     requestAnimationFrame(step);
+  }
+
+  private initTimelineAnimation(): void {
+
+    const observer = new IntersectionObserver((entries) => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+
+      });
+
+    }, {
+      threshold: 0.7
+    });
+
+    const elements = this.elementRef.nativeElement
+      .querySelectorAll('.timeline-content');
+
+    elements.forEach((el: Element) => {
+      observer.observe(el);
+    });
+
   }
 
   images: string[] = Array.from({ length: 12 }, (_, i) =>

@@ -200,9 +200,10 @@
 
 }
 
- .timeline-content:hover {
+ .timeline-content:hover,
+ .timeline-content.active{
   background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-15px) scale(1.05);
+  transform: translateY(-15px) scale(1.08);
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
     0 0 40px rgba(255, 255, 255, 0.2);
@@ -405,7 +406,7 @@
   }
 
   .timeline-content {
-    margin: 0 0 0 1rem;
+    margin: 0 0 .3rem 1rem;
     padding: 1.2rem;
   }
 
