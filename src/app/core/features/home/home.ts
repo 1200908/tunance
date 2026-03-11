@@ -159,11 +159,14 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     this.modalTouchStartX = e.changedTouches[0].screenX;
   }
 
-  onModalTouchEnd(e: TouchEvent): void {
+  onModalTouchEnd(e: TouchEvent) {
     const diff = this.modalTouchStartX - e.changedTouches[0].screenX;
     if (Math.abs(diff) > 50) {
-      if (diff > 0) this.nextModalImage();
-      else this.prevModalImage();
+      if (diff > 0 && this.modalCurrentIndex < this.shuffledImages.length - 1) {
+        this.nextModalImage();
+      } else if (diff < 0 && this.modalCurrentIndex > 0) {
+        this.prevModalImage();
+      }
     }
   }
 

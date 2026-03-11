@@ -215,8 +215,8 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   onModalTouchEnd(e: TouchEvent) {
     const diff = this.modalTouchStartX - e.changedTouches[0].screenX;
     if (Math.abs(diff) > 50) {
-      if (diff > 0) this.nextModalImage();
-      else this.prevModalImage();
+      if (diff > 0 && this.modalCurrentIndex < this.images.length - 1) this.nextModalImage();
+      else if (diff < 0 && this.modalCurrentIndex > 0) this.prevModalImage();
     }
   }
 
