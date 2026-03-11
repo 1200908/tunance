@@ -205,7 +205,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     'assets/momento_tunance/momento_tunance_24.jpg',
     'assets/momento_tunance/momento_tunance_25.jpg',
     'assets/momento_tunance/momento_tunance_26.jpg',
-    'assets/momento_tunance/momento_tunance_27.jpg'
+    'assets/momento_tunance/momento_tunance_27.jpg',
+    'assets/momento_tunance/momento_tunance_28.jpg',
+    'assets/momento_tunance/momento_tunance_29.jpg',
+    'assets/momento_tunance/momento_tunance_30.jpg',
+    'assets/momento_tunance/momento_tunance_31.jpg',
+    'assets/momento_tunance/momento_tunance_32.jpg',
+    'assets/momento_tunance/momento_tunance_33.jpg',
   ];
 
   shuffledImages: string[] = [];
