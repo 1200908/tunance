@@ -48,7 +48,7 @@
         <div
           class="carousel-slide"
           *ngFor="let img of images; let i = index"
-          (click)="openModal($event, img)"
+          (click)="openModal($event, i)"
         >
           <div class="poster-frame">
             <img [src]="img" [alt]="'Momento Tunance ' + (i + 1)" />
@@ -77,9 +77,31 @@
   </div>
 
   <!-- Modal -->
-  <div id="modal" class="modal" [class.active]="isModalOpen" (click)="closeModal()">
+  <div id="modal" class="modal" [class.active]="isModalOpen"
+       (click)="closeModal()"
+       (touchstart)="onModalTouchStart($event)"
+       (touchend)="onModalTouchEnd($event)">
+
     <span class="close" (click)="closeModal()">&times;</span>
-    <img class="modal-content" [src]="modalImageSrc" />
+
+    <button class="modal-arrow left"
+            (click)="prevModalImage(); $event.stopPropagation()"
+            [class.disabled]="modalCurrentIndex === 0">
+      <span class="fa fa-chevron-left"></span>
+    </button>
+
+    <!-- Imagem do modal -->
+    <div class="modal-image-wrapper" (click)="$event.stopPropagation()">
+      <img class="modal-content" [src]="modalImageSrc" />
+      <!-- CONTADOR -->
+      <div class="modal-counter">{{ modalCurrentIndex + 1 }} / {{ images.length }}</div>
+    </div>
+
+    <button class="modal-arrow right"
+            (click)="nextModalImage(); $event.stopPropagation()"
+            [class.disabled]="modalCurrentIndex >= images.length - 1">
+      <span class="fa fa-chevron-right"></span>
+    </button>
   </div>
 </section>
 

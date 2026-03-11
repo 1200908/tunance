@@ -50,7 +50,7 @@
         [src]="img"
         [alt]="'Momento Tunance ' + (i)"
         loading="lazy"
-        (click)="openModal($event)"
+        (click)="openModal($event, i)"
         [attr.data-group]="getImageGroup(i)"
         [class.hidden]="!isInitiallyVisible(i)"
         [class.show]="isInitiallyVisible(i)">
@@ -99,9 +99,30 @@
       <span class="fa fa-arrow-up"></span>
     </button>
   </div>
-  <div id="modal" class="modal" (click)="closeModal()">
+  <div id="modal" class="modal" [class.active]="isModalOpen"
+       (click)="closeModal()"
+       (touchstart)="onModalTouchStart($event)"
+       (touchend)="onModalTouchEnd($event)">
+
     <span class="close" (click)="closeModal()">&times;</span>
-    <img class="modal-content" id="modal-img">
+
+    <button class="modal-arrow left"
+            (click)="prevModalImage(); $event.stopPropagation()"
+            [class.disabled]="modalCurrentIndex === 0">
+      <span class="fa fa-chevron-left"></span>
+    </button>
+
+    <div class="modal-image-wrapper" (click)="$event.stopPropagation()">
+      <img class="modal-content" [src]="modalImageSrc" />
+      <div class="modal-counter">{{ modalCurrentIndex + 1 }} / {{ shuffledImages.length }}</div>
+    </div>
+
+    <button class="modal-arrow right"
+            (click)="nextModalImage(); $event.stopPropagation()"
+            [class.disabled]="modalCurrentIndex >= shuffledImages.length - 1">
+      <span class="fa fa-chevron-right"></span>
+    </button>
+
   </div>
 </section>
 

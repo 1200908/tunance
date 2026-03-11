@@ -125,16 +125,54 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  openModal(event: any) {
-    const modal = this.elementRef.nativeElement.querySelector('#modal');
-    const modalImg = this.elementRef.nativeElement.querySelector('#modal-img');
-    modal.style.display = 'flex';
-    modalImg.src = event.target.src;
+  // Modal
+  isModalOpen = false;
+  modalImageSrc = '';
+  modalCurrentIndex = 0;
+  modalTouchStartX = 0;
+
+  openModal(event: MouseEvent, index: number): void {
+    event.stopPropagation();
+    this.modalCurrentIndex = index;
+    this.modalImageSrc = this.shuffledImages[index];
+    this.isModalOpen = true;
   }
 
-  closeModal() {
-    const modal = this.elementRef.nativeElement.querySelector('#modal');
-    modal.style.display = 'none';
+  prevModalImage(): void {
+    if (this.modalCurrentIndex === 0) return;
+    this.modalCurrentIndex--;
+    this.modalImageSrc = this.shuffledImages[this.modalCurrentIndex];
+  }
+
+  nextModalImage(): void {
+    if (this.modalCurrentIndex >= this.shuffledImages.length - 1) return;
+    this.modalCurrentIndex++;
+    this.modalImageSrc = this.shuffledImages[this.modalCurrentIndex];
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+    this.modalImageSrc = '';
+  }
+
+  onModalTouchStart(e: TouchEvent): void {
+    this.modalTouchStartX = e.changedTouches[0].screenX;
+  }
+
+  onModalTouchEnd(e: TouchEvent): void {
+    const diff = this.modalTouchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) this.nextModalImage();
+      else this.prevModalImage();
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onModalKeydown(e: KeyboardEvent): void {
+    if (!this.isModalOpen) return;
+    if (e.key === 'ArrowRight') this.nextModalImage();
+    if (e.key === 'ArrowLeft') this.prevModalImage();
+    if (e.key === 'Escape') this.closeModal();
   }
 
   allImages = [

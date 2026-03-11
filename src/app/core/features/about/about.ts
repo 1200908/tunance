@@ -113,6 +113,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   // Modal
   isModalOpen = false;
   modalImageSrc = '';
+  modalCurrentIndex = 0;
 
   get maxIndex(): number {
     return Math.max(0, this.images.length - this.slidesPerView);
@@ -140,6 +141,12 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.currentIndex > this.maxIndex) {
       this.currentIndex = this.maxIndex;
     }
+  }
+  onModalKeydown(e: KeyboardEvent) {
+    if (!this.isModalOpen) return;
+    if (e.key === 'ArrowRight') this.nextModalImage();
+    if (e.key === 'ArrowLeft') this.prevModalImage();
+    if (e.key === 'Escape') this.closeModal();
   }
 
   private updateSlidesPerView(width: number): void {
@@ -172,10 +179,45 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.currentIndex = Math.min(dotIndex * this.slidesPerView, this.maxIndex);
   }
 
-  openModal(event: MouseEvent, imgSrc: string): void {
+  openModal(event: MouseEvent, index: number): void {
     event.stopPropagation();
-    this.modalImageSrc = imgSrc;
+    this.modalCurrentIndex = index;
+    this.modalImageSrc = this.images[index]; // <== aqui
     this.isModalOpen = true;
+    const targetIndex = Math.floor(index / this.slidesPerView) * this.slidesPerView;
+    this.currentIndex = Math.min(targetIndex, this.maxIndex);
+  }
+
+  prevModalImage(): void {
+    if (!this.isModalOpen) return;
+    this.modalCurrentIndex = (this.modalCurrentIndex - 1 + this.images.length) % this.images.length;
+    this.modalImageSrc = this.images[this.modalCurrentIndex];
+    this.syncCarouselToModal();
+  }
+
+  nextModalImage(): void {
+    if (!this.isModalOpen) return;
+    this.modalCurrentIndex = (this.modalCurrentIndex + 1) % this.images.length;
+    this.modalImageSrc = this.images[this.modalCurrentIndex];
+    this.syncCarouselToModal();
+  }
+
+  private syncCarouselToModal(): void {
+    const targetIndex = Math.floor(this.modalCurrentIndex / this.slidesPerView) * this.slidesPerView;
+    this.currentIndex = Math.min(targetIndex, this.maxIndex);
+  }
+  modalTouchStartX = 0;
+
+  onModalTouchStart(e: TouchEvent) {
+    this.modalTouchStartX = e.changedTouches[0].screenX;
+  }
+
+  onModalTouchEnd(e: TouchEvent) {
+    const diff = this.modalTouchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) this.nextModalImage();
+      else this.prevModalImage();
+    }
   }
 
   closeModal(): void {
