@@ -104,7 +104,6 @@
        (touchstart)="onModalTouchStart($event)"
        (touchend)="onModalTouchEnd($event)">
 
-    <span class="close" (click)="closeModal()">&times;</span>
 
     <button class="modal-arrow left"
             (click)="prevModalImage(); $event.stopPropagation()"
@@ -112,9 +111,13 @@
       <span class="fa fa-chevron-left"></span>
     </button>
 
+    <span class="close" (click)="closeModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
+
     <div class="modal-image-wrapper" (click)="$event.stopPropagation()">
       <img class="modal-content" [src]="modalImageSrc" />
-      <div class="modal-counter">{{ modalCurrentIndex + 1 }} / {{ shuffledImages.length }}</div>
+      <div class="modal-counter"> Momento Tunance {{ modalCurrentIndex + 1 }} / {{ shuffledImages.length }}</div>
     </div>
 
     <button class="modal-arrow right"
