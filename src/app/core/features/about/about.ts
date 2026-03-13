@@ -114,6 +114,8 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   isModalOpen = false;
   modalImageSrc = '';
   modalCurrentIndex = 0;
+  modalTouchStartY = 0;
+
 
   get maxIndex(): number {
     return Math.max(0, this.images.length - this.slidesPerView);
@@ -210,13 +212,19 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onModalTouchStart(e: TouchEvent) {
     this.modalTouchStartX = e.changedTouches[0].screenX;
+    this.modalTouchStartY = e.changedTouches[0].screenY;
   }
 
   onModalTouchEnd(e: TouchEvent) {
-    const diff = this.modalTouchStartX - e.changedTouches[0].screenX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0 && this.modalCurrentIndex < this.images.length - 1) this.nextModalImage();
-      else if (diff < 0 && this.modalCurrentIndex > 0) this.prevModalImage();
+    const diffX = this.modalTouchStartX - e.changedTouches[0].screenX;
+    const diffY = this.modalTouchStartY - e.changedTouches[0].screenY;
+
+    if (Math.abs(diffX) > 120 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 0 && this.modalCurrentIndex < this.images.length - 1) {
+        this.nextModalImage();
+      } else if (diffX < 0 && this.modalCurrentIndex > 0) {
+        this.prevModalImage();
+      }
     }
   }
 

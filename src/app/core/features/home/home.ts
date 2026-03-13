@@ -130,6 +130,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   modalImageSrc = '';
   modalCurrentIndex = 0;
   modalTouchStartX = 0;
+  modalTouchStartY = 0;
 
   openModal(event: MouseEvent, index: number): void {
     event.stopPropagation();
@@ -155,16 +156,19 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     this.modalImageSrc = '';
   }
 
-  onModalTouchStart(e: TouchEvent): void {
+  onModalTouchStart(e: TouchEvent) {
     this.modalTouchStartX = e.changedTouches[0].screenX;
+    this.modalTouchStartY = e.changedTouches[0].screenY;
   }
 
   onModalTouchEnd(e: TouchEvent) {
-    const diff = this.modalTouchStartX - e.changedTouches[0].screenX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0 && this.modalCurrentIndex < this.shuffledImages.length - 1) {
+    const diffX = this.modalTouchStartX - e.changedTouches[0].screenX;
+    const diffY = this.modalTouchStartY - e.changedTouches[0].screenY;
+
+    if (Math.abs(diffX) > 120 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 0 && this.modalCurrentIndex < this.shuffledImages.length - 1) {
         this.nextModalImage();
-      } else if (diff < 0 && this.modalCurrentIndex > 0) {
+      } else if (diffX < 0 && this.modalCurrentIndex > 0) {
         this.prevModalImage();
       }
     }
