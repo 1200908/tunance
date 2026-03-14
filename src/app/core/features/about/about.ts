@@ -1,6 +1,9 @@
-import { Component, OnInit, AfterViewInit, ElementRef, OnDestroy, HostListener } from '@angular/core';
+import {Component, OnInit, AfterViewInit, ElementRef, OnDestroy, HostListener, ChangeDetectorRef} from '@angular/core';
 import {ScrollRevealDirective} from '../../../shared/directives/scroll-reveal.directive';
 import {CommonModule} from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, Inject } from '@angular/core';
+import 'swiper/css';
 
 @Component({
   selector: 'app-about',
@@ -10,7 +13,7 @@ import {CommonModule} from '@angular/common';
 })
 export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngAfterViewInit(): void {
     this.initCounterAnimation();
@@ -133,7 +136,6 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.updateSlidesPerView(window.innerWidth);
   }
-  ngOnDestroy(): void {}
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
     const w = (event.target as Window).innerWidth;
@@ -181,29 +183,62 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.currentIndex = Math.min(dotIndex * this.slidesPerView, this.maxIndex);
   }
 
+  private swiper: any = null;
+
   openModal(event: MouseEvent, index: number): void {
     event.stopPropagation();
     this.modalCurrentIndex = index;
-    this.modalImageSrc = this.images[index]; // <== aqui
+    this.modalImageSrc = this.images[index];
     this.isModalOpen = true;
     const targetIndex = Math.floor(index / this.slidesPerView) * this.slidesPerView;
     this.currentIndex = Math.min(targetIndex, this.maxIndex);
+    setTimeout(() => this.initSwiper(index), 50);
+  }
+
+  async initSwiper(index: number) {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const { default: Swiper } = await import('swiper');
+    const { Keyboard, A11y } = await import('swiper/modules');
+    this.swiper = new Swiper('.modal .swiper-container', {
+      modules: [Keyboard, A11y],
+      initialSlide: index,
+      loop: false,
+      keyboard: { enabled: true },
+      slidesPerView: 1,
+      spaceBetween: 50,
+      on: {
+        slideChange: () => {
+          if (this.swiper) {
+            this.modalCurrentIndex = this.swiper.realIndex;
+            this.modalImageSrc = this.images[this.modalCurrentIndex];
+            this.cdr.detectChanges();
+            this.syncCarouselToModal();
+          }
+        }
+      }
+    });
   }
 
   prevModalImage(): void {
-    if (!this.isModalOpen) return;
-    this.modalCurrentIndex = (this.modalCurrentIndex - 1 + this.images.length) % this.images.length;
-    this.modalImageSrc = this.images[this.modalCurrentIndex];
-    this.syncCarouselToModal();
+    this.swiper ? this.swiper.slidePrev() : null;
   }
 
   nextModalImage(): void {
-    if (!this.isModalOpen) return;
-    this.modalCurrentIndex = (this.modalCurrentIndex + 1) % this.images.length;
-    this.modalImageSrc = this.images[this.modalCurrentIndex];
-    this.syncCarouselToModal();
+    this.swiper ? this.swiper.slideNext() : null;
   }
 
+  closeModal(): void {
+    this.isModalOpen = false;
+    this.modalImageSrc = '';
+    if (this.swiper) {
+      this.swiper.destroy(true, true);
+      this.swiper = null;
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.swiper) this.swiper.destroy(true, true);
+  }
   private syncCarouselToModal(): void {
     const targetIndex = Math.floor(this.modalCurrentIndex / this.slidesPerView) * this.slidesPerView;
     this.currentIndex = Math.min(targetIndex, this.maxIndex);
@@ -226,11 +261,6 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
         this.prevModalImage();
       }
     }
-  }
-
-  closeModal(): void {
-    this.isModalOpen = false;
-    this.modalImageSrc = '';
   }
 
   private carouselTouchStartX = 0;

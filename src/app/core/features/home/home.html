@@ -99,32 +99,37 @@
       <span class="fa fa-arrow-up"></span>
     </button>
   </div>
-  <div id="modal" class="modal" [class.active]="isModalOpen"
-       (click)="closeModal()"
-       (touchstart)="onModalTouchStart($event)"
-       (touchend)="onModalTouchEnd($event)">
+  <div class="modal" *ngIf="isModalOpen" (click)="closeModal()">
 
+  <span class="close" (click)="closeModal()">
+    <i class="fa-solid fa-xmark"></i>
+  </span>
 
-    <button class="modal-arrow left"
-            (click)="prevModalImage(); $event.stopPropagation()"
-            [class.disabled]="modalCurrentIndex === 0">
-      <span class="fa fa-chevron-left"></span>
-    </button>
+    <div class="modal-box" (click)="$event.stopPropagation()">
 
-    <span class="close" (click)="closeModal()">
-        <i class="fa-solid fa-xmark"></i>
-      </span>
+      <button class="modal-arrow left"
+              [class.disabled]="modalCurrentIndex === 0"
+              (click)="prevModalImage()">
+        <span class="fa fa-chevron-left"></span>
+      </button>
 
-    <div class="modal-image-wrapper" (click)="$event.stopPropagation()">
-      <img class="modal-content" [src]="modalImageSrc" />
-      <div class="modal-counter"> Momento Tunance {{ modalCurrentIndex + 1 }} / {{ shuffledImages.length }}</div>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let img of shuffledImages">
+            <img class="modal-content" [src]="img" />
+          </div>
+        </div>
+      </div>
+
+      <button class="modal-arrow right"
+              [class.disabled]="modalCurrentIndex === shuffledImages.length - 1"
+              (click)="nextModalImage()">
+        <span class="fa fa-chevron-right"></span>
+      </button>
+
     </div>
 
-    <button class="modal-arrow right"
-            (click)="nextModalImage(); $event.stopPropagation()"
-            [class.disabled]="modalCurrentIndex >= shuffledImages.length - 1">
-      <span class="fa fa-chevron-right"></span>
-    </button>
+    <div class="modal-counter">Momento Tunance {{ modalCurrentIndex + 1 }} / {{ shuffledImages.length }}</div>
 
   </div>
 </section>

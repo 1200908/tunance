@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy, ElementRef, AfterViewInit, PLATFORM_ID, Inject, ViewChild, HostListener} from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, AfterViewInit, PLATFORM_ID, Inject, ViewChild, HostListener, ChangeDetectorRef, NgZone} from '@angular/core';
 import {MainLayoutComponent} from '../../layout/main-layout/main-layout';
 import {Router} from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import Typed from 'typed.js';
 import {ScrollRevealDirective} from '../../../shared/directives/scroll-reveal.directive';
+import 'swiper/css';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   currentRoute: string = '';
 
-  constructor(private router: Router, private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private router: Router, private ngZone: NgZone, private cdr: ChangeDetectorRef, private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) {
   }
 
   private countdownInterval: any;
@@ -27,14 +28,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     this.shuffleGallery();
   }
 
-  ngOnDestroy() {
-    if (this.countdownInterval) {
-      clearInterval(this.countdownInterval);
-    }
-    if (this.galleryObserver) {
-      this.galleryObserver.disconnect();
-    }
-  }
 
   startCountdown() {
     // Data do evento - 15 de Março de 2026
@@ -126,6 +119,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   // Modal
+  private swiper: any = null;
+
   isModalOpen = false;
   modalImageSrc = '';
   modalCurrentIndex = 0;
@@ -137,23 +132,62 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     this.modalCurrentIndex = index;
     this.modalImageSrc = this.shuffledImages[index];
     this.isModalOpen = true;
+    setTimeout(() => this.initSwiper(index), 50);
+  }
+
+  async initSwiper(index: number) {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const { default: Swiper } = await import('swiper');
+    const { Keyboard, A11y } = await import('swiper/modules');
+    this.swiper = new Swiper('.modal .swiper-container', {
+      modules: [Keyboard, A11y],
+      initialSlide: index,
+      loop: false,
+      autoHeight: true,
+      keyboard: { enabled: true },
+      slidesPerView: 1,
+      spaceBetween: 50,
+      on: {
+        slideChange: () => {
+          this.ngZone.run(() => {           // ← isto força o Angular a detetar
+            if (this.swiper) {
+              this.modalCurrentIndex = this.swiper.activeIndex;
+              this.modalImageSrc = this.shuffledImages[this.modalCurrentIndex];
+              this.cdr.detectChanges();
+            }
+          });
+        }
+      }
+    });
   }
 
   prevModalImage(): void {
-    if (this.modalCurrentIndex === 0) return;
-    this.modalCurrentIndex--;
-    this.modalImageSrc = this.shuffledImages[this.modalCurrentIndex];
+    this.swiper ? this.swiper.slidePrev() : null;
   }
 
   nextModalImage(): void {
-    if (this.modalCurrentIndex >= this.shuffledImages.length - 1) return;
-    this.modalCurrentIndex++;
-    this.modalImageSrc = this.shuffledImages[this.modalCurrentIndex];
+    this.swiper ? this.swiper.slideNext() : null;
   }
 
   closeModal(): void {
     this.isModalOpen = false;
     this.modalImageSrc = '';
+    if (this.swiper) {
+      this.swiper.destroy(true, true);
+      this.swiper = null;
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.swiper) this.swiper.destroy(true, true);
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+    }
+    if (this.galleryObserver) {
+      this.galleryObserver.disconnect();
+    }
+    if (this.countdownInterval) clearInterval(this.countdownInterval);
+    if (this.galleryObserver) this.galleryObserver.disconnect();
   }
 
   onModalTouchStart(e: TouchEvent) {

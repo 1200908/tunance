@@ -77,32 +77,39 @@
   </div>
 
   <!-- Modal -->
-  <div id="modal" class="modal" [class.active]="isModalOpen"
+  <div class="modal" *ngIf="isModalOpen"
        (click)="closeModal()"
-       (touchstart)="onModalTouchStart($event)"
-       (touchend)="onModalTouchEnd($event)">
+       (touchstart)="onModalTouchStart($event)">
 
     <span class="close" (click)="closeModal()">&times;</span>
 
-    <button class="modal-arrow left"
-            (click)="prevModalImage(); $event.stopPropagation()"
-            [class.disabled]="modalCurrentIndex === 0">
-      <span class="fa fa-chevron-left"></span>
-    </button>
+    <div class="modal-box" (click)="$event.stopPropagation()">
 
-    <!-- Imagem do modal -->
-    <div class="modal-image-wrapper" (click)="$event.stopPropagation()">
-      <img class="modal-content" [src]="modalImageSrc" />
-      <!-- CONTADOR -->
-      <div class="modal-counter">{{ modalCurrentIndex + 1 }} / {{ images.length }}</div>
+      <button class="modal-arrow left"
+              [class.disabled]="modalCurrentIndex === 0"
+              (click)="prevModalImage()">
+        <span class="fa fa-chevron-left"></span>
+      </button>
+
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let img of images">
+            <img class="modal-content" [src]="img" />
+          </div>
+        </div>
+      </div>
+
+      <button class="modal-arrow right"
+              [class.disabled]="modalCurrentIndex === images.length - 1"
+              (click)="nextModalImage()">
+        <span class="fa fa-chevron-right"></span>
+      </button>
+
     </div>
 
-    <button class="modal-arrow right"
-            (click)="nextModalImage(); $event.stopPropagation()"
-            [class.disabled]="modalCurrentIndex >= images.length - 1">
-      <span class="fa fa-chevron-right"></span>
-    </button>
+    <div class="modal-counter">{{ modalCurrentIndex + 1 }} / {{ images.length }}</div>
   </div>
+
 </section>
 
 <section class="about-content">
