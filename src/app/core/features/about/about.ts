@@ -211,8 +211,8 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
           if (this.swiper) {
             this.modalCurrentIndex = this.swiper.realIndex;
             this.modalImageSrc = this.images[this.modalCurrentIndex];
-            this.cdr.detectChanges();
             this.syncCarouselToModal();
+            this.cdr.detectChanges();
           }
         }
       }
