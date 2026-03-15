@@ -249,7 +249,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     'assets/momento_tunance/momento_tunance_30.jpg',
     'assets/momento_tunance/momento_tunance_31.jpg',
     'assets/momento_tunance/momento_tunance_32.jpg',
-    'assets/momento_tunance/momento_tunance_33.jpg'
+    'assets/momento_tunance/momento_tunance_33.jpg',
+    'assets/momento_tunance/momento_tunance_34.jpg',
+    'assets/momento_tunance/momento_tunance_35.jpg',
+    'assets/momento_tunance/momento_tunance_36.jpg'
   ];
 
   shuffledImages: string[] = [];
@@ -400,10 +403,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         this.typed = new Typed(element, {
           strings: [
             'Esepus tunae',
-            'TauLF',
-            'TaipaM',
-            '',
-            ''
+            'TAUL-F',
+            'TAIPAM',
+            'Looney Tuna',
+            'TFDI'
           ],
           typeSpeed: 50,
           backSpeed: 30,
