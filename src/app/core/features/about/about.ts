@@ -103,7 +103,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
 
-  images: string[] = Array.from({ length: 12 }, (_, i) =>
+  images: string[] = Array.from({ length: 13 }, (_, i) =>
     `assets/cartaz/cartaz_${i + 1}_tunance.jpg`
   );
 
