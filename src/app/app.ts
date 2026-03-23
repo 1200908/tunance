@@ -4,7 +4,7 @@ import {ScrollProgressComponent} from './shared/scroll-progress/scroll-progress.
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ScrollProgressComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

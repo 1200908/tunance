@@ -406,8 +406,9 @@
   }
 
   .timeline-content {
-    margin: 0 0 .3rem 1rem;
-    padding: 1.2rem;
+    margin: 0 auto;
+    width: calc(100% - 40px); /* 20px de cada lado */
+    padding: 1.5rem;
   }
 
   .timeline-content h3 {
@@ -451,6 +452,12 @@
     padding: 0.9rem 2rem;
     font-size: 1rem;
   }
+
+  .timeline-content:hover,
+  .timeline-content.active{
+    transform: translateY(-15px) scale(1.02);
+  }
+
 }
 
 .stat-number {

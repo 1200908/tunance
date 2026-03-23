@@ -492,6 +492,12 @@
   .map-placeholder iframe {
     height: 300px;
   }
+  .place-card,
+  .transport-card,
+  .tip-card{
+    margin: 0 auto;
+    width: calc(100% - 20px);
+  }
 }
 
 
