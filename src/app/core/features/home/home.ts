@@ -419,4 +419,25 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  scrollToHomeTunanceDetails() {
+    const el = document.getElementById('sobre');
+    if (!el) return;
+
+    const yOffset = -90; // altura da navbar
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
+    });
+  }
+
+  isArrowVisible = true;
+
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.isArrowVisible = window.scrollY < window.innerHeight - 700;
+  }
+
+
 }

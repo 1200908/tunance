@@ -19,7 +19,7 @@
   justify-content: center;
   text-align: center;
   color: #fff;
-  padding-top: 40vh;
+  padding-top: 30vh;
   /* ← sem z-index, sem overflow:hidden */
   background: transparent; /* ← transparente para ver a imagem */
 }
@@ -109,7 +109,30 @@
     transform: translateY(-2px);
   }
 
-  .about {
+.scroll-arrow {
+  font-size: 2rem;
+  position: absolute;
+  color: #343944;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-arrow i {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.hidden-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.about {
     padding: 5rem 5%;
     background: linear-gradient(135deg, #292e38 0%, #292e38 100%);
     text-align: center;
@@ -297,6 +320,9 @@
 
     .photo-grid-mini {
       grid-template-columns: 1fr;
+    }
+    .scroll-arrow {
+      bottom: 6rem;
     }
   }
 
