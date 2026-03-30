@@ -436,7 +436,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @HostListener('window:scroll')
   onScroll(): void {
-    this.isArrowVisible = window.scrollY < window.innerHeight - 700;
+    this.isArrowVisible = window.scrollY < window.innerHeight - 600;
   }
 
 
