@@ -130,6 +130,9 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   get activeDot(): number {
+    if (this.currentIndex >= this.maxIndex) {
+      return this.dotsArray.length - 1;
+    }
     return Math.floor(this.currentIndex / this.slidesPerView);
   }
 

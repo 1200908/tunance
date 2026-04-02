@@ -62,7 +62,7 @@ export class ContactComponent {
 
   Os teus dados não serão utilizados para publicidade, promoções ou qualquer outro fim não relacionado com o teu contacto.
 
-  Podes solicitar acesso, correção ou eliminação dos teus dados a qualquer momento, enviando um email para geral@tunance.pt
+  Podes solicitar acesso, correção ou eliminação dos teus dados a qualquer momento, enviando um email para geral.tunance@gmail.com
   .
   `.trim();
 
