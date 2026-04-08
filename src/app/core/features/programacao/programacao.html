@@ -11,7 +11,7 @@
 
 <section class="programacao-info">
   <div class="info-banner">
-    <div class="info-item hidden" appScrollReveal>
+    <div class="info-item hidden" appScrollReveal (click)="goToSchedule()" style="cursor: pointer">
       <span class="icon">🗓️</span>
       <div>
         <strong>Data</strong>
@@ -360,6 +360,13 @@
         </div>
         <div class="schedule-item">
           <div class="time-badge">23:00</div>
+          <div class="item-content">
+            <h4>XIII Tunance</h4>
+            <p>Tuna a definir</p>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time-badge">23:30</div>
           <div class="item-content">
             <h4>XIII Tunance</h4>
             <p>Tuna a definir</p>

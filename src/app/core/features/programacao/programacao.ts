@@ -20,6 +20,16 @@ export class ProgramacaoComponent {
     });
   }
 
+  goToSchedule() {
+    this.router.navigate(['/programacao']).then(() => {
+      // espera até a navegação terminar
+      const el = document.querySelector('.schedule-section');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
   goToTunas() {
     this.router.navigate(['/programacao']).then(() => {
       // espera até a navegação terminar
