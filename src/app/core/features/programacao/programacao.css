@@ -518,3 +518,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.disabled-section {
+  display: none;
+}

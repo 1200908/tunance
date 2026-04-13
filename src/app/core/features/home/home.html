@@ -1,11 +1,17 @@
 <head>
   <meta name="description" content="Tunance Festival – Festival de tunas académicas em Baião com música, tradição e animação. Descobre a programação, história, parceiros e guia de visita.">
 </head>
-<img src="assets/tunance_capa.png" alt="Festival Tunance" class="hero-img" #heroImg>
+<img src="assets/tunance_capa_on_hold.png" alt="Festival Tunance" class="hero-img" #heroImg>
 <section class="hero">
     <div class="event-card">
-      <p class="date">10 e 11 de Abril, 2026</p>
-      <p class="location">📍 Baião  🎟️ Entrada Livre</p>
+      <p class="date">Tunance o melhor evento de tunas </p>
+
+      <!--<p class="date">10 e 11 de Abril, 2026</p>-->
+      <p class="location">
+        Mais do que um festival, o Tunance é um encontro de tradição, música e amizade,
+        onde o espírito académico ganha vida no coração de Baião.
+      </p>
+      <!--
       <p class="location" *ngIf="true">
         <span #typedElement></span>
       </p>
@@ -26,8 +32,16 @@
           <span class="number" id="seconds">0</span>
           <span class="label">Seg</span>
         </div>
+      </div>-->
+      <div class="hero-actions">
+        <a href="./programacao" class="btn countdown-btn">
+          Ver programação
+        </a>
+
+        <a href="./sobre" class="btn-secondary">
+          Descobre tudo sobre nós
+        </a>
       </div>
-      <a href="./programacao" class="btn countdown-btn">Ver programação</a>
     </div>
   <div class="scroll-arrow" (click)="scrollToHomeTunanceDetails()" [class.hidden-arrow]="!isArrowVisible" >
     <i class="fa-solid fa-chevron-down"></i>
