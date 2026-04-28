@@ -75,11 +75,9 @@ npx angular-cli-ghpages --dir=dist/tunance/browser --cname tunance.pt
 email usado no contacto: contacto.tunance@gmail.com
 emailjs
 Domain registered in https://billing.ping.pt/clientarea.php
-MjEwNDIwMTJ0dW5hbmNlaW5pY2lv
 
 tunance
 pt.pt
-MjEwNDIwMTJUdW5AbmNlaW5pY2lv
 
 clouflare account with google 
 
